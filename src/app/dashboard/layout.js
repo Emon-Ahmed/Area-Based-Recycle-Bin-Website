@@ -109,7 +109,7 @@ export default function RootLayout({ children }) {
                 <SheetContent side="left" className="flex flex-col">
                   <nav className="grid gap-2 text-lg font-medium">
                     <Link
-                      href="#"
+                      href="/"
                       className="flex items-center gap-2 text-lg font-semibold"
                     >
                       <Package2 className="w-6 h-6" />
@@ -185,7 +185,9 @@ export default function RootLayout({ children }) {
                   <DropdownMenuItem>Settings</DropdownMenuItem>
                   <DropdownMenuItem>Support</DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Logout</DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/">Logout</Link>
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </header>
