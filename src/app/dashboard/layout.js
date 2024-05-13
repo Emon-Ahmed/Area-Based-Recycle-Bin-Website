@@ -191,9 +191,9 @@ export default function RootLayout({ children }) {
                 </DropdownMenuContent>
               </DropdownMenu>
             </header>
-            <main className="flex flex-col flex-1 gap-4 p-4 lg:gap-6 lg:p-6">
+            <div className="flex flex-col flex-1 gap-4 p-4 lg:gap-6 lg:p-6">
               {children}
-            </main>
+            </div>
           </div>
         </div>
       </body>

@@ -44,9 +44,9 @@ export default function Navbar() {
           </Link>
           <Link
             className="hover:underline hover:underline-offset-4"
-            href="/login"
+            href="/dashboard"
           >
-            <Button>Login</Button>
+            <Button>Dashboard</Button>
           </Link>
         </nav>
         <Sheet>
