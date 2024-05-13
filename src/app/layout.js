@@ -1,7 +1,8 @@
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
-import Home from "./page";
+import Navbar from "@/components/custom-navbar";
+import Footer from "@/components/custom-footer";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -15,13 +16,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta property="og:title" content={"Site"} />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable
         )}
       >
-        <Home> {children}</Home>
+        {children}
       </body>
     </html>
   );
