@@ -1,9 +1,7 @@
 import "./globals.css";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
-import Navbar from "@/components/custom-navbar";
-import Footer from "@/components/custom-footer";
-
+import Home from "./page";
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -23,9 +21,7 @@ export default function RootLayout({ children }) {
           fontSans.variable
         )}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <Home> {children}</Home>
       </body>
     </html>
   );
