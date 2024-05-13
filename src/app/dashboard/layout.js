@@ -34,7 +34,7 @@ export default function DashboardLayout({ children }) {
             <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
               <Link href="/" className="flex items-center gap-2 font-semibold">
                 <Package2 className="w-6 h-6" />
-                <span className="">Acme Inc</span>
+                <span className="">Area Based Recycle Bin</span>
               </Link>
               <Button variant="outline" size="icon" className="w-8 h-8 ml-auto">
                 <Bell className="w-4 h-4" />
@@ -44,14 +44,14 @@ export default function DashboardLayout({ children }) {
             <div className="flex-1">
               <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
                 <Link
-                  href="#"
+                  href="/dashboard"
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
                 >
                   <Home className="w-4 h-4" />
                   Dashboard
                 </Link>
                 <Link
-                  href="#"
+                  href="/dashboard/orders"
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
                 >
                   <ShoppingCart className="w-4 h-4" />
@@ -120,9 +120,9 @@ export default function DashboardLayout({ children }) {
                   >
                     <ShoppingCart className="w-5 h-5" />
                     Orders
-                    <Badge className="flex items-center justify-center w-6 h-6 ml-auto rounded-full shrink-0">
+                    {/* <Badge className="flex items-center justify-center w-6 h-6 ml-auto rounded-full shrink-0">
                       6
-                    </Badge>
+                    </Badge> */}
                   </Link>
                   <Link
                     href="#"
