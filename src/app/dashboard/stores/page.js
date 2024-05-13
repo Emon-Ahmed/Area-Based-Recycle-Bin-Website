@@ -2,8 +2,8 @@ import React from 'react'
 
 const Loading = () => {
   return (
-    <div>Dashboard Data Loading...</div>
+    <div>Dashboard Data </div>
   )
 }
 
-export default Loading
+export default Loading 
