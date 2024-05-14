@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const Loading = () => {
-  return (
-    <div>Dashboard Data </div>
-  )
-}
+const StoreSettings = () => {
+  return <div>Dashboard Data </div>;
+};
 
-export default Loading 
+export default StoreSettings;
