@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
 
 const Loading = () => {
   return (
-    <div>Loading</div>
-  )
-}
+    <div className="container">
+      <div className="max-w-sm mx-auto my-32">
+        <span class="loader"></span>
+      </div>
+    </div>
+  );
+};
 
-export default Loading
+export default Loading;

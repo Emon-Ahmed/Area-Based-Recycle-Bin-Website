@@ -1,12 +1,10 @@
 import Navbar from '@/components/custom-navbar'
 import React from 'react'
 
-const About = () => {
+const ProductsPage = () => {
   return (
-    <div>
-       <Navbar />
-    </div>
+    <div><Navbar/></div>
   )
 }
 
-export default About
+export default ProductsPage

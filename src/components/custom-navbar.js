@@ -16,7 +16,7 @@ import { RiLuggageCartLine } from "react-icons/ri";
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 z-50 w-full bg-white shadow-sm dark:bg-gray-950">
+    <header className="top-0 z-50 w-full bg-white shadow-sm  dark:bg-gray-950">
       <div className="container flex items-center justify-between h-16 px-4 mx-auto md:px-6">
         <Link className="flex items-center gap-2" href="/">
           <RiLuggageCartLine className="w-6 h-6" />

@@ -10,11 +10,13 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import Navbar from "@/components/custom-navbar";
 
 export default function LoginForm() {
   return (
-    <div className="my-32">
-      <Card className="max-w-sm mx-auto">
+    <div>
+      <Navbar />
+      <Card className="max-w-sm mx-auto my-32">
         <CardHeader>
           <CardTitle className="text-xl">Sign Up</CardTitle>
           <CardDescription>
