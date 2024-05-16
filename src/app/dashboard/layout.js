@@ -3,16 +3,18 @@ import {
   Bell,
   CircleUser,
   Home,
-  LineChart,
+  LocateFixed,
   Menu,
   Package,
   Package2,
   Search,
   ShoppingCart,
   Users,
+  UsersRound,
+  Settings,
+  Plus,
 } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -34,7 +36,7 @@ export default function DashboardLayout({ children }) {
             <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
               <Link href="/" className="flex items-center gap-2 font-semibold">
                 <Package2 className="w-6 h-6" />
-                <span className="">Area Based Recycle Bin</span>
+                <span className="">Recycle Bin Website</span>
               </Link>
               <Button variant="outline" size="icon" className="w-8 h-8 ml-auto">
                 <Bell className="w-4 h-4" />
@@ -55,31 +57,42 @@ export default function DashboardLayout({ children }) {
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
                 >
                   <ShoppingCart className="w-4 h-4" />
-                  Orders
-                  {/* <Badge className="flex items-center justify-center w-6 h-6 ml-auto rounded-full shrink-0">
-                      6
-                    </Badge> */}
+                  Manage Orders
+                </Link>
+                <Link
+                  href="/dashboard/products/add-product"
+                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
+                >
+                  <Plus className="w-4 h-4" />
+                  Add Products
                 </Link>
                 <Link
                   href="/dashboard/products"
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
                 >
                   <Package className="w-4 h-4" />
-                  Products{" "}
+                  Manage Products
                 </Link>
                 <Link
-                  href="#"
-                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-muted-foreground hover:text-primary"
+                  href="/dashboard/customers"
+                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
                 >
-                  <Users className="w-4 h-4" />
-                  Customers
+                  <UsersRound className="w-4 h-4" />
+                  All Customers
                 </Link>
-                <Link
-                  href="#"
-                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-muted-foreground hover:text-primary"
+                {/* <Link
+                  href="/dashboard/location"
+                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
                 >
-                  <LineChart className="w-4 h-4" />
-                  Analytics
+                 <LocateFixed className="w-4 h-4" />
+                  Location
+                </Link> */}
+                <Link
+                  href="/dashboard/settings"
+                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
+                >
+                  <Settings className="w-4 h-4" />
+                  Settings
                 </Link>
               </nav>
             </div>
@@ -105,51 +118,55 @@ export default function DashboardLayout({ children }) {
                     className="flex items-center gap-2 text-lg font-semibold"
                   >
                     <Package2 className="w-6 h-6" />
-                    <span className="sr-only">Acme Inc</span>
+                    <span className="sr-only">Recycle Bin</span>
                   </Link>
                   <Link
-                    href="#"
+                    href="/dashboard"
                     className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                   >
                     <Home className="w-5 h-5" />
                     Dashboard
                   </Link>
                   <Link
-                    href="#"
+                    href="/dashboard/orders"
                     className="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"
                   >
                     <ShoppingCart className="w-5 h-5" />
-                    Orders
-                    {/* <Badge className="flex items-center justify-center w-6 h-6 ml-auto rounded-full shrink-0">
-                      6
-                    </Badge> */}
+                    Manage Orders
                   </Link>
                   <Link
-                    href="#"
+                    href="/dashboard/products/add-product"
+                    className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                  >
+                    <Plus className="w-5 h-5" />
+                    Add Product
+                  </Link>
+                  <Link
+                    href="/dashboard/products"
                     className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                   >
                     <Package className="w-5 h-5" />
-                    Products
+                    Manage Products
                   </Link>
                   <Link
-                    href="#"
+                    href="/dashboard/customers"
                     className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                   >
-                    <Users className="w-5 h-5" />
-                    Customers
+                    <UsersRound className="w-5 h-5" />
+                    All Customers
                   </Link>
                   <Link
-                    href="#"
+                    href="/dashboard/settings"
                     className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                   >
-                    <LineChart className="w-5 h-5" />
-                    Analytics
+                    <Settings className="w-5 h-5" />
+                    Settings
                   </Link>
                 </nav>
               </SheetContent>
             </Sheet>
             <div className="flex-1 w-full">
-              <form>
+              {/* <form>
                 <div className="relative">
                   <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input
@@ -158,7 +175,7 @@ export default function DashboardLayout({ children }) {
                     className="w-full pl-8 shadow-none appearance-none bg-background md:w-2/3 lg:w-1/3"
                   />
                 </div>
-              </form>
+              </form> */}
             </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -172,10 +189,13 @@ export default function DashboardLayout({ children }) {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <Link href="/dashboard">
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                </Link>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Support</DropdownMenuItem>
+                <Link href="/dashboard/settings">
+                  <DropdownMenuItem>Settings</DropdownMenuItem>
+                </Link>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <Link href="/">Logout</Link>
