@@ -10,37 +10,35 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-
 import { Section, Container } from "@/components/craft";
-import Image from "next/image";
-import Logo from "@/../public/logo.svg";
 import Balancer from "react-wrap-balancer";
 import Navbar from "@/components/custom-navbar";
+import { RiLuggageCartLine } from "react-icons/ri";
+import Link from "next/link";
 
 export default function Component() {
   return (
     <div>
-      {" "}
       <Navbar />
-      <div className="container my-32">
-        <Section className="my-24">
+      <div className="container my-24">
+        <Section className="my-16">
           <Container className="flex flex-col items-center gap-6 text-center">
-            <Image
-              src={Logo}
-              width={172}
-              height={72}
-              alt="Company Logo"
-              className="mb-6 not-prose dark:invert md:mb-8"
-            />
+            <Link href="/" className="flex items-center gap-2">
+              <h3 className="sr-only">Recycle Bin Website</h3>
+              <RiLuggageCartLine className="w-12 h-12" />
+              <span className="text-3xl font-bold">Recycle Bin Website</span>
+            </Link>
             <h1 className="text-4xl tracking-tight scroll-m-20 lg:text-5xl">
               <Balancer>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Eco-friendly e-commerce platform offering diverse, area-specific
+                recycling bin solutions.
               </Balancer>
             </h1>
             <h3 className="text-2xl tracking-tight scroll-m-20 text-muted-foreground">
               <Balancer>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.
+                "An innovative marketplace connecting multiple vendors,
+                providing specialized recycling bins tailored to regional
+                requirements, promoting sustainable waste management practices."
               </Balancer>
             </h3>
           </Container>

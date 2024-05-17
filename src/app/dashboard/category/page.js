@@ -1,4 +1,7 @@
 import { Badge } from "@/components/ui/badge";
+import { MoreHorizontal } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -6,6 +9,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -24,19 +34,19 @@ export default function Customers() {
           <div className="grid items-start gap-4 auto-rows-max md:gap-8 lg:col-span-2">
             <Card x-chunk="dashboard-05-chunk-3">
               <CardHeader className="px-7">
-              <div className="flex flex-row justify-between">
-                <div>
-                  <CardTitle>Category</CardTitle>
-                  <CardDescription>
-                    Manage your products and view their sales performance.
-                  </CardDescription>
+                <div className="flex flex-row justify-between">
+                  <div>
+                    <CardTitle>Category</CardTitle>
+                    <CardDescription>
+                      Manage your products and view their sales performance.
+                    </CardDescription>
+                  </div>
+                  <div className="text-right">
+                    <Link href="/dashboard/products/add-product">
+                      <Button>Add Category</Button>
+                    </Link>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <Link href="/dashboard/products/add-product">
-                    <Button>Add Product</Button>
-                  </Link>
-                </div>
-              </div>
               </CardHeader>
               <CardContent>
                 <Table>
@@ -44,14 +54,13 @@ export default function Customers() {
                     <TableRow>
                       <TableHead>Name </TableHead>
                       <TableHead className="hidden sm:table-cell">
-                        Email
-                      </TableHead>
-                      <TableHead className="hidden sm:table-cell">
                         Type
                       </TableHead>
-
                       <TableHead className="hidden md:table-cell">
                         Date
+                      </TableHead>
+                      <TableHead className="hidden md:table-cell">
+                        Action
                       </TableHead>
                     </TableRow>
                   </TableHeader>
@@ -60,28 +69,60 @@ export default function Customers() {
                       <TableCell>
                         <div className="font-medium">Liam Johnson</div>
                       </TableCell>
-                      <TableCell>
-                        <div className="text-sm text-muted-foreground md:inline">example@gmail.com</div>
-                      </TableCell>
                       <TableCell className="hidden sm:table-cell">
                         Sale
                       </TableCell>
                       <TableCell className="hidden md:table-cell">
                         2023-06-23
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="w-4 h-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem>Delete</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
                         <div className="font-medium">Liam Johnson</div>
                       </TableCell>
-                      <TableCell>
-                        <div className="text-sm text-muted-foreground md:inline">example@gmail.com</div>
-                      </TableCell>
                       <TableCell className="hidden sm:table-cell">
                         Sale
                       </TableCell>
                       <TableCell className="hidden md:table-cell">
                         2023-06-23
+                      </TableCell>
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              aria-haspopup="true"
+                              size="icon"
+                              variant="ghost"
+                            >
+                              <MoreHorizontal className="w-4 h-4" />
+                              <span className="sr-only">Toggle menu</span>
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                            <DropdownMenuItem>Edit</DropdownMenuItem>
+                            <DropdownMenuItem>Delete</DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
                       </TableCell>
                     </TableRow>
                   </TableBody>

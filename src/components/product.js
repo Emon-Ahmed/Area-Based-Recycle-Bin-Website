@@ -19,15 +19,19 @@ const Product = () => {
           width={400}
         />
         <div className="p-4 bg-white dark:bg-gray-950">
-          <h3 className="text-lg font-semibold md:text-xl">
-            Classic Wristwatch
-          </h3>
+          <Link href="/products/1">
+            <h3 className="text-lg font-semibold md:text-xl">
+              Classic Wristwatch
+            </h3>
+          </Link>
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Timeless design
           </p>
           <div className="flex items-center justify-between">
             <h4 className="text-base font-semibold md:text-lg">$59.99</h4>
-            <Button size="sm">Buy Now</Button>
+            <Link href="/products/1">
+              <Button size="sm">Buy Now</Button>
+            </Link>
           </div>
         </div>
       </div>

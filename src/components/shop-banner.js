@@ -13,12 +13,12 @@ import {
 } from "@/components/ui/select";
 import { Button } from "./ui/button";
 
-export default function Banner() {
+export default function ShopBanner() {
   return (
-    <div className="flex flex-col items-center justify-center py-36 bg-gradient-to-br from-[#4776E6] to-[#8E54E9]">
-      <div className="w-full max-w-3xl p-20 bg-white rounded-lg shadow-lg">
+    <div className="flex flex-col items-center justify-center py-12 bg-gradient-to-br from-[#4776E6] to-[#8E54E9]">
+      <div className="w-full max-w-3xl p-8 bg-white rounded-lg shadow-lg">
         <div className="mb-6 text-center">
-          <h1 className="text-4xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-gray-900">
           Localized Recycle Bins Marketplace
           </h1>
           <p className="mt-2 text-gray-600">

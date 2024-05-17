@@ -5,6 +5,7 @@ import Logo from "@/../public/logo.svg";
 import Balancer from "react-wrap-balancer";
 import { Button } from "@/components/ui/button";
 import { Github, Twitter, Facebook } from "lucide-react";
+import { RiLuggageCartLine } from "react-icons/ri";
 
 export default function Footer() {
   return (
@@ -12,15 +13,17 @@ export default function Footer() {
       <Section>
         <Container className="grid md:grid-cols-[1.5fr_0.5fr_0.5fr] gap-12 border-t">
           <div className="flex flex-col gap-6 not-prose">
-            <Link href="/">
-              <h3 className="sr-only">brijr/components</h3>
-              <Image
+            <Link href="/" className="flex items-center gap-2">
+              <h3 className="sr-only">Recycle Bin Website</h3>
+              {/* <Image
                 src={Logo}
                 alt="Logo"
                 width={120}
                 height={27.27}
                 className="transition-all dark:invert hover:opacity-75"
-              ></Image>
+              ></Image> */}
+              <RiLuggageCartLine className="w-12 h-12" />
+              <span className="text-3xl font-bold">Recycle Bin Website</span>
             </Link>
             <p>
               <Balancer>
@@ -31,9 +34,9 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-2">
             <h5>Website</h5>
-            <Link href="/">Blog</Link>
-            <Link href="/">Authors</Link>
-            <Link href="/">Categories</Link>
+            <Link href="/">Home</Link>
+            <Link href="/products">Shop</Link>
+            <Link href="/about">About</Link>
           </div>
           <div className="flex flex-col gap-2">
             <h5>Legal</h5>
@@ -55,8 +58,7 @@ export default function Footer() {
             </Button>
           </div>
           <p className="text-muted-foreground">
-            © Area Based eCommerce Website
-            . All rights reserved. 2024-present.
+            © Area Based eCommerce Website . All rights reserved. 2024-present.
           </p>
         </Container>
       </Section>

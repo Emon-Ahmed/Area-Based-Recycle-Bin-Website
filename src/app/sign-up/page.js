@@ -51,9 +51,9 @@ export default function LoginForm() {
             <Button type="submit" className="w-full">
               Create an account
             </Button>
-            <Button variant="outline" className="w-full">
+            {/* <Button variant="outline" className="w-full">
               Sign up with GitHub
-            </Button>
+            </Button> */}
           </div>
           <div className="mt-4 text-sm text-center">
             Already have an account?{" "}
