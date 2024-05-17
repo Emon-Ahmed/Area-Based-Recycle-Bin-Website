@@ -2,8 +2,8 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="container">
-      <div className="max-w-sm mx-auto my-32">
+    <div>
+      <div className="flex flex-row justify-center align-middle my-36">
         <span class="loader"></span>
       </div>
     </div>

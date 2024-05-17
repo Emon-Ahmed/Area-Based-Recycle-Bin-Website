@@ -67,6 +67,13 @@ export default function DashboardLayout({ children }) {
                   Add Products
                 </Link>
                 <Link
+                  href="/dashboard/category"
+                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
+                >
+                  <Plus className="w-4 h-4" />
+                  Manage Category
+                </Link>
+                <Link
                   href="/dashboard/products"
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
                 >
