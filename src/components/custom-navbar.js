@@ -40,7 +40,7 @@ export default function Navbar() {
             Contact
           </Link>
           <Link className="hover:underline hover:underline-offset-4" href="/sign-up">
-            Sing Up
+            Sign Up
           </Link>
           <Link
             className="hover:underline hover:underline-offset-4"
