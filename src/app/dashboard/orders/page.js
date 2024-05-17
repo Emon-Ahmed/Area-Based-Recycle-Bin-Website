@@ -14,6 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import Link from "next/link";
 
 export default function OrderPage() {
   return (
@@ -34,7 +35,7 @@ export default function OrderPage() {
                     <TableRow>
                       <TableHead>Customer</TableHead>
                       <TableHead className="hidden sm:table-cell">
-                        Type
+                        Product
                       </TableHead>
                       <TableHead className="hidden sm:table-cell">
                         Status
@@ -49,12 +50,9 @@ export default function OrderPage() {
                     <TableRow className="bg-accent">
                       <TableCell>
                         <div className="font-medium">Liam Johnson</div>
-                        <div className="hidden text-sm text-muted-foreground md:inline">
-                          liam@example.com
-                        </div>
                       </TableCell>
                       <TableCell className="hidden sm:table-cell">
-                        Sale
+                        <Link href="/dashboard/orders/manage">Phone</Link>
                       </TableCell>
                       <TableCell className="hidden sm:table-cell">
                         <Badge className="text-xs" variant="secondary">
@@ -69,12 +67,9 @@ export default function OrderPage() {
                     <TableRow>
                       <TableCell>
                         <div className="font-medium">Olivia Smith</div>
-                        <div className="hidden text-sm text-muted-foreground md:inline">
-                          olivia@example.com
-                        </div>
                       </TableCell>
                       <TableCell className="hidden sm:table-cell">
-                        Refund
+                      <Link href="/dashboard/orders/manage">Laptop</Link>
                       </TableCell>
                       <TableCell className="hidden sm:table-cell">
                         <Badge className="text-xs" variant="outline">
