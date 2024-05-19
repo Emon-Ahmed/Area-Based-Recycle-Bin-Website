@@ -11,7 +11,7 @@ const Product = () => {
           alt="Product 4"
           className="object-cover w-full h-64"
           height={400}
-          src="/placeholder.svg"
+          src="/boys-pants.jpg"
           style={{
             aspectRatio: "400/400",
             objectFit: "cover",

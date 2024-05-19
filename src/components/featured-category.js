@@ -15,7 +15,7 @@ export default function FeaturedCategory() {
             alt="Home Decor"
             className="object-cover w-48 h-48 mb-4"
             height="200"
-            src="/dress.jpg"
+            src="/boys-dress.jpg"
             style={{
               aspectRatio: "200/200",
               objectFit: "cover",
@@ -29,7 +29,7 @@ export default function FeaturedCategory() {
             alt="Living Room"
             className="object-cover mb-4 h-96 w-96"
             height="400"
-            src="/home.jpg"
+            src="/girls-dress.jpg"
             style={{
               aspectRatio: "400/400",
               objectFit: "cover",
@@ -43,7 +43,7 @@ export default function FeaturedCategory() {
             alt="Lighting"
             className="object-cover w-48 h-48 mb-4"
             height="200"
-            src="/mobile.jpg"
+            src="/boys-pants.jpg"
             style={{
               aspectRatio: "200/200",
               objectFit: "cover",
