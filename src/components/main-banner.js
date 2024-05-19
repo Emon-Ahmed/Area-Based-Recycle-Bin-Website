@@ -1,8 +1,3 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/4PmxK6p1T8g
- * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
- */
 import { Input } from "@/components/ui/input";
 import {
   SelectValue,
@@ -19,7 +14,7 @@ export default function Banner() {
       <div className="w-full max-w-3xl p-20 bg-white rounded-lg shadow-lg">
         <div className="mb-6 text-center">
           <h1 className="text-4xl font-bold text-gray-900">
-          Localized Recycle Bins Marketplace
+            Localized Recycle Bins Marketplace
           </h1>
           <p className="mt-2 text-gray-600">
             Search for anything and get the best results.
@@ -38,11 +33,14 @@ export default function Banner() {
               <SelectValue placeholder="Location" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="new-york">New York</SelectItem>
-              <SelectItem value="los-angeles">Los Angeles</SelectItem>
-              <SelectItem value="chicago">Chicago</SelectItem>
-              <SelectItem value="london">London</SelectItem>
-              <SelectItem value="tokyo">Tokyo</SelectItem>
+              <SelectItem value="Barishal">Barishal</SelectItem>
+              <SelectItem value="Chattogram">Chattogram</SelectItem>
+              <SelectItem value="Khulna">Khulna</SelectItem>
+              <SelectItem value="Dhaka">Dhaka</SelectItem>
+              <SelectItem value="Rajshahi">Rajshahi</SelectItem>
+              <SelectItem value="Rangpur">Rangpur</SelectItem>
+              <SelectItem value="Mymensingh">Mymensingh</SelectItem>
+              <SelectItem value="Sylhet">Sylhet</SelectItem>
             </SelectContent>
             <Button>Search</Button>
           </Select>

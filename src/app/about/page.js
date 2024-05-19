@@ -1,5 +1,4 @@
 import { Section, Container } from "@/components/craft";
-import Placeholder from "@/../public/placeholder.webp";
 import Image from "next/image";
 import Balancer from "react-wrap-balancer";
 import { ArrowRight } from "lucide-react";
@@ -37,11 +36,11 @@ const Hero = () => {
               <div className="my-8 h-96 not-prose w-full overflow-hidden border rounded-lg md:rounded-xl md:h-[480px]">
                 <Image
                   className="object-cover object-bottom w-full h-full"
-                  src={Placeholder}
+                  src='/About-Image.jpg'
                   width={1920}
                   height={1080}
                   alt="hero image"
-                  placeholder="blur"
+                  // placeholder="blur"
                 />
               </div>
             </div>

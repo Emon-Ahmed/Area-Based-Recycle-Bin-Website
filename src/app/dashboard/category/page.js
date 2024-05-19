@@ -1,7 +1,16 @@
-import { Badge } from "@/components/ui/badge";
 import { MoreHorizontal } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Card,
   CardContent,
@@ -42,8 +51,36 @@ export default function Customers() {
                     </CardDescription>
                   </div>
                   <div className="text-right">
-                    <Link href="/dashboard/products/add-product">
-                      <Button>Add Category</Button>
+                    <Link href="/dashboard/category/">
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button variant="outline">Add Category</Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px]">
+                          <DialogHeader>
+                            <DialogTitle>Add Category</DialogTitle>
+                            {/* <DialogDescription>
+                              Make changes to your profile here. Click save when
+                              you're done.
+                            </DialogDescription> */}
+                          </DialogHeader>
+                          <div className="grid gap-4 py-4">
+                            <div className="grid items-center grid-cols-4 gap-4">
+                              <Label htmlFor="name" className="text-right">
+                                Name
+                              </Label>
+                              <Input
+                                id="name"
+                                defaultValue="Dress"
+                                className="col-span-3"
+                              />
+                            </div>
+                          </div>
+                          <DialogFooter>
+                            <Button type="submit">Save changes</Button>
+                          </DialogFooter>
+                        </DialogContent>
+                      </Dialog>
                     </Link>
                   </div>
                 </div>
