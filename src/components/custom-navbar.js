@@ -12,9 +12,14 @@ import {
   Sheet,
 } from "@/components/ui/sheet";
 import { RiLuggageCartLine } from "react-icons/ri";
+import { auth } from "../../auth";
+import SignOut from "./sign-out";
+import SignIn from "./google-sign";
+import Image from "next/image";
 
-
-export default function Navbar() {
+export default async function Navbar() {
+  const session = await auth();
+  console.log(session);
   return (
     <header className="top-0 z-50 w-full bg-white shadow-sm dark:bg-gray-950">
       <div className="container flex items-center justify-between h-16 px-4 mx-auto md:px-6">
@@ -27,27 +32,60 @@ export default function Navbar() {
           <Link className="hover:underline hover:underline-offset-4" href="/">
             Home
           </Link>
-          <Link className="hover:underline hover:underline-offset-4" href="/products">
+          <Link
+            className="hover:underline hover:underline-offset-4"
+            href="/products"
+          >
             Products
           </Link>
           {/* <Link className="hover:underline hover:underline-offset-4" href="/stores">
             Stores
           </Link> */}
-          <Link className="hover:underline hover:underline-offset-4" href="/about">
+          <Link
+            className="hover:underline hover:underline-offset-4"
+            href="/about"
+          >
             About
           </Link>
-          <Link className="hover:underline hover:underline-offset-4" href="/contact">
+          <Link
+            className="hover:underline hover:underline-offset-4"
+            href="/contact"
+          >
             Contact
           </Link>
-          <Link className="hover:underline hover:underline-offset-4" href="/sign-up">
-            Sign Up
-          </Link>
-          <Link
+          {session?.user ? (
+            <></>
+          ) : (
+            <Link
+              className="hover:underline hover:underline-offset-4"
+              href="/login"
+            >
+              Login
+            </Link>
+          )}
+          {session?.user ? (
+            <div className="flex items-center justify-center">
+              {/* <p>{session?.user?.name}</p> | */}
+              <Link href="/dashboard">
+              <Image
+                src={session?.user?.image}
+                alt={session?.user?.name}
+                width={32}
+                height={32}
+                className="mx-2 rounded-full"
+              />
+              </Link>
+              <SignOut />
+            </div>
+          ) : (
+            <SignIn />
+          )}
+          {/* <Link
             className="hover:underline hover:underline-offset-4"
             href="/dashboard"
           >
             <Button>Dashboard</Button>
-          </Link>
+          </Link> */}
         </nav>
         <Sheet>
           <SheetTrigger asChild>

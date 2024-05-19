@@ -1,5 +1,5 @@
 "use client";
-import { BDLocations } from "react-bd-location";
+// import { BDLocations } from "react-bd-location";
 import Image from "next/image";
 import { ChevronLeft, Upload } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -136,7 +136,7 @@ export default function AddProduct() {
                   </CardHeader>
                   <CardContent>
                     <div className="grid gap-3">
-                      <BDLocations
+                      {/* <BDLocations
                         onChange={(e) => console.log(e)}
                         bn={false}
                         showLable={true}
@@ -151,7 +151,7 @@ export default function AddProduct() {
                           district: "",
                           upazila: "",
                         }}
-                      />
+                      /> */}
                     </div>
                   </CardContent>
                 </Card>

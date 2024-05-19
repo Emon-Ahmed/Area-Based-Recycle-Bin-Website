@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import { auth } from "/auth";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,8 +11,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Navbar from "@/components/custom-navbar";
+import SignIn from "@/components/google-sign";
 
-export default function LoginForm() {
+export default async function LoginForm() {
+  const session = await auth();
+  console.log(session);
   return (
     <div>
       <Navbar />
@@ -51,9 +54,7 @@ export default function LoginForm() {
             <Button type="submit" className="w-full">
               Create an account
             </Button>
-            {/* <Button variant="outline" className="w-full">
-              Sign up with GitHub
-            </Button> */}
+            <SignIn />
           </div>
           <div className="mt-4 text-sm text-center">
             Already have an account?{" "}

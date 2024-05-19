@@ -2,9 +2,9 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import mongoClientPromise from "./lib/mongoClinetPromise";
-import { dbConnect } from "./lib/mongo";
-import { userModel } from "./models/user-model";
+import mongoClientPromise from "@/lib/mongoClinetPromise";
+import { dbConnect } from "@/lib/mongo";
+import { userModel } from "@/models/user-model";
 
 export const {
     handlers: { GET, POST },

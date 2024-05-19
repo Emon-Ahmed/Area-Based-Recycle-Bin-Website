@@ -71,7 +71,7 @@ export default function DashboardLayout({ children }) {
                   href="/dashboard/category"
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
                 >
-                  <PackageSearch  className="w-4 h-4" />
+                  <PackageSearch className="w-4 h-4" />
                   Manage Category
                 </Link>
                 <Link
