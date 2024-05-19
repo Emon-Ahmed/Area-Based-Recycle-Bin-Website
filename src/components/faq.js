@@ -11,25 +11,26 @@ import {
 
 const content = [
   {
-    question: "Lorem ipsum dolor sit amet?",
+    question: "What types of recycling bins are available on the platform?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Our platform offers a wide range of recycling bins, including residential, commercial, and industrial bins, each designed for specific waste management needs.",
     link: "https://google.com",
   },
   {
-    question: "Ut enim ad minim veniam?",
+    question: "How do I find recycling bins suitable for my area?",
     answer:
-      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Simply enter your location on the website, and our system will display recycling bin options tailored to your regional recycling requirements and guidelines.",
   },
   {
-    question: "Duis aute irure dolor in reprehenderit?",
+    question: "Can I compare products from different vendors?",
     answer:
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "Yes, our platform allows you to compare recycling bins from multiple vendors, including prices, features, and customer reviews, to help you make an informed decision.",
   },
   {
-    question: "Excepteur sint occaecat cupidatat non proident?",
+    question:
+      "Are there any eco-friendly initiatives associated with purchasing through this website?",
     answer:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Absolutely! We partner with vendors who prioritize sustainability, and a portion of each sale goes towards environmental conservation projects in your area.",
   },
 ];
 

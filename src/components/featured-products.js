@@ -25,10 +25,6 @@ export default function FeaturedProducts() {
             <Product />
             <Product />
             <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
           </div>
         </div>
       </div>
