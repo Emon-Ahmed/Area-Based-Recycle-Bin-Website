@@ -50,7 +50,7 @@ export default function FeaturedCategory() {
             }}
             width="200"
           />
-          <Button variant="outline">Lighting</Button>
+          <Button variant="outline">Lighting Items</Button>
         </div>
       </div>
     </section>
