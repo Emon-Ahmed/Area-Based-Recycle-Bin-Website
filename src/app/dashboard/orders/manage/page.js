@@ -1,8 +1,5 @@
 "use client";
-import { BDLocations } from "react-bd-location";
-import Image from "next/image";
-import { ChevronLeft, Upload } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -21,7 +18,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import Link from "next/link";
 
 export default function ManageOrder() {
   return (
