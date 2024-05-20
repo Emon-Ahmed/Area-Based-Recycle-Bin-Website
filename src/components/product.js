@@ -4,7 +4,7 @@ const Product = () => {
   return (
     <div>
       <div className="relative overflow-hidden transition-transform duration-300 ease-in-out rounded-lg shadow-lg group hover:shadow-xl hover:-translate-y-2">
-        <Link className="absolute inset-0 z-10" href="#">
+        <Link href="/products/1" className="absolute inset-0 z-10">
           <span className="sr-only">View</span>
         </Link>
         <img
@@ -19,11 +19,13 @@ const Product = () => {
           width={400}
         />
         <div className="p-4 bg-white dark:bg-gray-950">
-          <Link href="/products/1">
+          
             <h3 className="text-lg font-semibold md:text-xl">
+            <Link href="/products/1">
               Classic Wristwatch
+              </Link>
             </h3>
-          </Link>
+          
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Timeless design
           </p>

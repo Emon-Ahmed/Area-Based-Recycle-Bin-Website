@@ -1,4 +1,3 @@
-import Brands from "@/components/brands";
 import CTA from "@/components/cta";
 import Navbar from "@/components/custom-navbar";
 import FAQ from "@/components/faq";
