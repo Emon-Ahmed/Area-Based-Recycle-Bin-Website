@@ -15,7 +15,8 @@ import {
   Settings,
   Plus,
 } from "lucide-react";
-
+import { auth } from "../../../auth";
+import Logout from "@/components/logout";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -28,7 +29,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-export default function DashboardLayout({ children }) {
+export default async function DashboardLayout({ children }) {
+  const session = await auth();
   return (
     <div>
       <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -205,7 +207,7 @@ export default function DashboardLayout({ children }) {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <Link href="/dashboard">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuLabel>{session?.user?.name}'s Account</DropdownMenuLabel>
                 </Link>
                 <DropdownMenuSeparator />
                 <Link href="/dashboard/settings">
@@ -213,7 +215,7 @@ export default function DashboardLayout({ children }) {
                 </Link>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link href="/">Logout</Link>
+                  <Link href="/"><Logout/></Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

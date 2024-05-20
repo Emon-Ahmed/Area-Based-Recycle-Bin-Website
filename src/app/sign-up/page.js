@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { auth } from "/auth";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -8,14 +6,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import Navbar from "@/components/custom-navbar";
-import SignIn from "@/components/google-sign";
+import RegisterForm from "@/components/register-form";
 
 export default async function LoginForm() {
-  const session = await auth();
-  console.log(session);
   return (
     <div>
       <Navbar />
@@ -27,37 +21,9 @@ export default async function LoginForm() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="grid gap-2">
-                <Label htmlFor="first-name">First name</Label>
-                <Input id="first-name" placeholder="Max" required />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="last-name">Last name</Label>
-                <Input id="last-name" placeholder="Robinson" required />
-              </div>
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" />
-            </div>
-            <Button type="submit" className="w-full">
-              Create an account
-            </Button>
-            <SignIn />
-          </div>
+          <RegisterForm/>
           <div className="mt-4 text-sm text-center">
-            Already have an account?{" "}
+            Already have an account?
             <Link href="/login" className="underline">
               Sign in
             </Link>

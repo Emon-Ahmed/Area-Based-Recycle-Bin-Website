@@ -1,10 +1,10 @@
-import { doSignOut } from "@/app/actions/index";
+// import { doSignOut } from "@/app/actions/index";
 
 const SignOut = () => {
   return (
-    <form action={doSignOut}>
+    // <form action={doSignOut}>
       <button type="submit">Sign Out</button>
-    </form>
+    // </form>
   );
 };
 
