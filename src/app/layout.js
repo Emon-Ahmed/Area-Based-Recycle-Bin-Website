@@ -1,8 +1,10 @@
 import "./globals.css";
-import "./../styles/loader.css"
+import "./../styles/loader.css";
 import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/custom-footer";
+import { SessionProvider } from "next-auth/react";
+import { auth } from "../../auth";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -15,6 +17,7 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const session = auth();
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -23,7 +26,7 @@ export default function RootLayout({ children }) {
           fontSans.variable
         )}
       >
-        {children}
+        <SessionProvider session={session}>{children}</SessionProvider>
         <Footer />
       </body>
     </html>

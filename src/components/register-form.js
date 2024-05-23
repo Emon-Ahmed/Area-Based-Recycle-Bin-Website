@@ -5,15 +5,16 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import SignIn from "./google-sign";
 
 const RegisterForm = () => {
   const [error, setError] = useState("");
   const router = useRouter();
+  
   async function onSubmit(event) {
     event.preventDefault();
     try {
       const formData = new FormData(event.currentTarget);
+      
       const fname = formData.get("fname");
       const lname = formData.get("lname");
       const email = formData.get("email");
@@ -38,7 +39,7 @@ const RegisterForm = () => {
   }
   return (
     <div>
-      <div className="text-xl text-center text-red-500">{error && error}</div>
+      <div className="text-xl text-red-500">{error && error}</div>
       <form className="login-form" onSubmit={onSubmit}>
         <div className="grid gap-4">
           <div className="grid grid-cols-2 gap-4">

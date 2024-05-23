@@ -49,38 +49,23 @@ export default async function Navbar() {
             Contact
           </Link>
           {session?.user ? (
-            <></>
-          ) : (
             <Link
-              className="hover:underline hover:underline-offset-4"
-              href="/login"
-            >
-              Login
-            </Link>
-          )}
-          {session?.user ? (
-            <div className="flex items-center justify-center">
-              {/* <p>{session?.user?.name}</p> | */}
-              <Link href="/dashboard">
-              <Image
-                src={session?.user?.image}
-                alt={session?.user?.name}
-                width={32}
-                height={32}
-                className="mx-2 rounded-full"
-              />
-              </Link>
-              <SignOut />
-            </div>
-          ) : (
-            <SignIn />
-          )}
-          {/* <Link
             className="hover:underline hover:underline-offset-4"
             href="/dashboard"
           >
             <Button>Dashboard</Button>
-          </Link> */}
+          </Link>
+          ) : (
+            
+            <Link
+              className="hover:underline hover:underline-offset-4"
+              href="/login"
+            >
+              <Button>Login</Button>
+            </Link>
+          )}
+
+          {/*  */}
         </nav>
         <Sheet>
           <SheetTrigger asChild>

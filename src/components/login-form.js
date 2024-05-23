@@ -20,7 +20,7 @@ function LoginFormComponent() {
       const formData = new FormData(event.currentTarget);
       const response = await login(formData);
       console.log(response);
-      if (!!response.error) {
+      if (!response.error) {
         setError(response.error);
       } else {
         router.push("/dashboard");

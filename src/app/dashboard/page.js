@@ -24,7 +24,14 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-export default function Dashboard() {
+import { auth } from "../../../auth";
+import { redirect } from "next/navigation";
+
+export default async function Dashboard() {
+  const session = await auth();
+  if(!session){
+    redirect('/login')
+  }
   return (
     <div className="flex flex-col w-full min-h-screen">
       <main className="flex flex-col flex-1 gap-4 p-4 md:gap-8 md:p-8">
