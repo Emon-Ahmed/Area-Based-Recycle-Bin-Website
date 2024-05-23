@@ -1,5 +1,6 @@
-import { Button } from "./ui/button";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+
 const Product = () => {
   return (
     <div>
@@ -19,13 +20,10 @@ const Product = () => {
           width={400}
         />
         <div className="p-4 bg-white dark:bg-gray-950">
-          
-            <h3 className="text-lg font-semibold md:text-xl">
-            <Link href="/products/1">
-              Classic Wristwatch
-              </Link>
-            </h3>
-          
+          <h3 className="text-lg font-semibold md:text-xl">
+            <Link href="/products/1">Classic Wristwatch</Link>
+          </h3>
+
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Timeless design
           </p>

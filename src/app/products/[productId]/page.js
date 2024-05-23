@@ -3,35 +3,13 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Navbar from "@/components/custom-navbar";
 
-import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Separator } from "@/components/ui/separator";
-
-
 export default function Component() {
   return (
     <div>
       <Navbar />
       <div className="container">
-      {/* <Separator className="my-4" /> */}
-
         <div className="bg-white dark:bg-gray-950">
-            
           <section className="grid items-start max-w-6xl gap-8 px-4 py-12 mx-auto md:grid-cols-2 md:gap-12 md:py-12">
-            
             <div>
               <img
                 alt="Product Image"
@@ -57,30 +35,9 @@ export default function Component() {
                 advanced audio technology, these headphones deliver an immersive
                 listening experience.
               </p>
-              {/* <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1">
-              <StarIcon className="w-5 h-5 fill-primary" />
-              <StarIcon className="w-5 h-5 fill-primary" />
-              <StarIcon className="w-5 h-5 fill-primary" />
-              <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
-              <StarIcon className="w-5 h-5 fill-muted stroke-muted-foreground" />
-            </div>
-            <span className="text-gray-500 dark:text-gray-400">
-              4.3 (125 reviews)
-            </span>
-          </div> */}
               <div className="text-4xl font-bold">$149.99</div>
               <div className="grid gap-4">
-                <div className="flex items-center gap-4">
-                  {/* <Input
-                className="w-20 px-3 py-2 text-gray-900 border border-gray-300 rounded-md shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-50"
-                defaultValue="1"
-                max="10"
-                min="1"
-                type="number"
-              />
-  <Button size="lg">Add to Cart</Button> */}
-                </div>
+                <div className="flex items-center gap-4"></div>
                 <div className="flex items-center gap-4">
                   <span className="text-gray-500 dark:text-gray-400">
                     Bid a price:
@@ -256,43 +213,5 @@ export default function Component() {
         </div>
       </div>
     </div>
-  );
-}
-
-function CheckIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M20 6 9 17l-5-5" />
-    </svg>
-  );
-}
-
-function StarIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-    </svg>
   );
 }

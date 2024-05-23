@@ -15,7 +15,7 @@ import {
   Settings,
   Plus,
 } from "lucide-react";
-import { auth } from "../../../auth";
+import { auth } from "../../lib/auth";
 import Logout from "@/components/logout";
 import { Button } from "@/components/ui/button";
 import {

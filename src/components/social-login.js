@@ -1,14 +1,15 @@
 "use client";
+
 import Link from "next/link";
 import { signIn } from "next-auth/react";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
 const SocialLogins = () => {
   const handleAuth = (event) => {
     signIn("google", { callbackUrl: "http://localhost:3000/dashboard" });
   };
   return (
-    <>
+    <div>
       <div className="flex gap-4">
         <Button variant="outline" className="w-full" onClick={handleAuth}>
           Google
@@ -20,7 +21,7 @@ const SocialLogins = () => {
           Sign up
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 

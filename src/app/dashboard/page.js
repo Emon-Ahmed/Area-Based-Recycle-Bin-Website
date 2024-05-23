@@ -24,7 +24,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { auth } from "../../../auth";
+import { auth } from "../../lib/auth";
 import { redirect } from "next/navigation";
 
 export default async function Dashboard() {

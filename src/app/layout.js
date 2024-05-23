@@ -4,7 +4,7 @@ import { Inter as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/custom-footer";
 import { SessionProvider } from "next-auth/react";
-import { auth } from "../../auth";
+import { auth } from "@/lib/auth";
 
 const fontSans = FontSans({
   subsets: ["latin"],

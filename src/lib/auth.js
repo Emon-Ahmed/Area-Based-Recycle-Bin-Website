@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import mongoClientPromise from "@/lib/mongoClinetPromise";
+import mongoClientPromise from "@/lib/mongoClientPromise";
 import { userModel } from "@/models/user-model";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -27,7 +27,7 @@ export const {
       },
 
       async authorize(credentials) {
-        // await dbConnect ();
+        await dbConnect ();
         if (credentials == null) return null;
         console.log(credentials);
         try {

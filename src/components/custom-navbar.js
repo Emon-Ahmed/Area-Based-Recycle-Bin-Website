@@ -7,10 +7,7 @@ import {
   Sheet,
 } from "@/components/ui/sheet";
 import { RiLuggageCartLine } from "react-icons/ri";
-import { auth } from "../../auth";
-import SignOut from "./sign-out";
-import SignIn from "./google-sign";
-import Image from "next/image";
+import { auth } from "@/lib/auth";
 
 export default async function Navbar() {
   const session = await auth();

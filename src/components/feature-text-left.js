@@ -20,7 +20,9 @@ const FeatureLeft = () => {
           <div className="flex flex-col gap-6 py-8">
             <h3 className="!my-0 text-2xl">How We Operate Our Work</h3>
             <p className="font-light leading-[1.4] opacity-70">
-            our platform allows you to compare recycling bins from multiple vendors, including prices, features, and customer reviews, to help you make an informed decision.
+              our platform allows you to compare recycling bins from multiple
+              vendors, including prices, features, and customer reviews, to help
+              you make an informed decision.
             </p>
             <div className="flex items-center gap-2 not-prose">
               {/* <Button className="w-fit" asChild>

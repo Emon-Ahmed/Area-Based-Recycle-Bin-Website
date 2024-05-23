@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -9,17 +9,15 @@ import { Button } from "@/components/ui/button";
 const RegisterForm = () => {
   const [error, setError] = useState("");
   const router = useRouter();
-  
+
   async function onSubmit(event) {
     event.preventDefault();
     try {
       const formData = new FormData(event.currentTarget);
-      
       const fname = formData.get("fname");
       const lname = formData.get("lname");
       const email = formData.get("email");
       const password = formData.get("password");
-
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
@@ -74,7 +72,6 @@ const RegisterForm = () => {
           <Button type="submit" className="w-full">
             Create an account
           </Button>
-          {/* <SignIn /> */}
         </div>
       </form>
     </div>

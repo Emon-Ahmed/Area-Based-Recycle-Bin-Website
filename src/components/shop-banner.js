@@ -6,7 +6,7 @@ import {
   SelectContent,
   Select,
 } from "@/components/ui/select";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 
 export default function ShopBanner() {
   return (
@@ -14,7 +14,7 @@ export default function ShopBanner() {
       <div className="w-full max-w-3xl p-8 bg-white rounded-lg shadow-lg">
         <div className="mb-6 text-center">
           <h1 className="text-2xl font-bold text-gray-900">
-          Localized Recycle Bins Marketplace
+            Localized Recycle Bins Marketplace
           </h1>
           <p className="mt-2 text-gray-600">
             Search for anything and get the best results.

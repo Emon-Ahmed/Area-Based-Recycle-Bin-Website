@@ -1,9 +1,11 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function FeaturedCategory() {
   return (
     <section className="pt-20 pb-8">
-      <h2 className="mb-10 text-4xl font-bold text-center">Shop by Categories</h2>
+      <h2 className="mb-10 text-4xl font-bold text-center">
+        Shop by Categories
+      </h2>
       <div className="flex justify-center gap-8">
         <div className="flex flex-col items-center">
           <img
@@ -49,5 +51,5 @@ export default function FeaturedCategory() {
         </div>
       </div>
     </section>
-  )
+  );
 }

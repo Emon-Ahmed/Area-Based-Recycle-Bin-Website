@@ -33,7 +33,7 @@ const FeatureRight = () => {
             <Image
               src="/showcase1.webp"
               alt="placeholder"
-              width='450'
+              width="450"
               height="450"
               className="object-cover fill"
             />

@@ -1,7 +1,5 @@
 import * as Craft from "@/components/craft";
-
 import { ArrowUpRight } from "lucide-react";
-
 import {
   Accordion,
   AccordionContent,
