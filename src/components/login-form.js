@@ -1,5 +1,4 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import { login } from "@/app/actions";
 import { Input } from "@/components/ui/input";
@@ -15,11 +14,9 @@ function LoginFormComponent() {
 
   async function onSubmit(event) {
     event.preventDefault();
-
     try {
       const formData = new FormData(event.currentTarget);
       const response = await login(formData);
-      console.log(response);
       if (!response.error) {
         setError(response.error);
       } else {

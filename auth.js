@@ -5,6 +5,7 @@ import mongoClientPromise from "@/lib/mongoClinetPromise";
 import { userModel } from "@/models/user-model";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { dbConnect } from "@/lib/mongo"
 
 export const {
   handlers: { GET, POST },
@@ -26,7 +27,7 @@ export const {
       },
 
       async authorize(credentials) {
-        console.log('go');
+        // await dbConnect ();
         if (credentials == null) return null;
         console.log(credentials);
         try {
