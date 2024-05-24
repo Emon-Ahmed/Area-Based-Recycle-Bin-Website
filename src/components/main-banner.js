@@ -14,7 +14,7 @@ export default function Banner() {
       <div className="w-full max-w-3xl p-20 bg-white rounded-lg shadow-lg">
         <div className="mb-6 text-center">
           <h1 className="text-4xl font-bold text-gray-900">
-            Area Recycle Bins Marketplace
+            Area Based Recycle Bin Website
           </h1>
           <p className="mt-2 text-gray-600">
             Search for anything and get the best results.
