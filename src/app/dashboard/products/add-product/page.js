@@ -1,5 +1,4 @@
 "use client";
-// import { BDLocations } from "react-bd-location";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
@@ -23,12 +22,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import Link from "next/link";
+import { CldUploadWidget } from "next-cloudinary";
 
 export default function AddProduct() {
   const [error, setError] = useState("");
   const router = useRouter();
-
+  const [resource, setResource] = useState();
+  const productImage = resource?.secure_url;
   async function onSubmit(event) {
     event.preventDefault();
     try {
@@ -49,11 +49,11 @@ export default function AddProduct() {
           productDescription,
           // productCategory,
           productPrice,
+          productImage,
           // productLocation,
-          // productImage,
         }),
       });
-      res.status === 201 && router.push("/dashboard/products");
+      res.status === 201 && productImage && router.push("/dashboard/products");
     } catch (error) {
       setError(error.message);
     }
@@ -179,24 +179,7 @@ export default function AddProduct() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid gap-3">
-                      {/* <BDLocations
-                        onChange={(e) => console.log(e)}
-                        bn={false}
-                        showLable={true}
-                        className="select"
-                        label={{
-                          division: "",
-                          district: "",
-                          upazila: "",
-                        }}
-                        placeholder={{
-                          division: "",
-                          district: "",
-                          upazila: "",
-                        }}
-                      /> */}
-                    </div>
+                    <div className="grid gap-3"></div>
                   </CardContent>
                 </Card>
                 <Card
@@ -215,11 +198,13 @@ export default function AddProduct() {
                         alt="Product image"
                         className="object-cover w-full rounded-md aspect-square"
                         height="300"
-                        src="/placeholder.svg"
+                        placeholder="blur"
+                        blurDataURL={"/placeholder.svg"}
+                        src={productImage}
                         width="300"
                       />
-                      <div className="grid grid-cols-3 gap-2">
-                        <button>
+                      <div className="grid gap-2 grid-cols">
+                        {/* <button>
                           <Image
                             alt="Product image"
                             className="object-cover w-full rounded-md aspect-square"
@@ -227,8 +212,8 @@ export default function AddProduct() {
                             src="/placeholder.svg"
                             width="84"
                           />
-                        </button>
-                        <button>
+                        </button> */}
+                        {/* <button>
                           <Image
                             alt="Product image"
                             className="object-cover w-full rounded-md aspect-square"
@@ -236,27 +221,47 @@ export default function AddProduct() {
                             src="/placeholder.svg"
                             width="84"
                           />
-                        </button>
-                        <button className="flex items-center justify-center w-full border border-dashed rounded-md aspect-square">
+                        </button> */}
+                        {/* <button className="flex items-center justify-center w-full border border-dashed rounded-md aspect-square">
                           <Upload className="w-4 h-4 text-muted-foreground" />
                           <span className="sr-only">Upload</span>
-                        </button>
+                        </button> */}
+                        <CldUploadWidget
+                          uploadPreset="recycle-bin"
+                          onSuccess={(result, { widget }) => {
+                            setResource(result?.info);
+                            widget.close();
+                          }}
+                        >
+                          {({ open }) => {
+                            function handleOnClick() {
+                              setResource(undefined);
+                              open();
+                            }
+                            return (
+                              <Button className="flex items-center" variant="outline" onClick={handleOnClick}>
+                                Upload an Image
+                              </Button>
+                            );
+                          }}
+                        </CldUploadWidget>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
               </div>
             </div>
-            <div className="flex items-center justify-center gap-2 md:hidden">
+            {/* <div className="flex items-center justify-center gap-2 md:hidden">
               <Link href="/dashboard/products">
                 <Button variant="outline" size="sm">
-                  Discard
+                  Discard 2
                 </Button>
               </Link>
+
               <Button type="submit" size="sm">
-                Save Product
+                Save Product 2
               </Button>
-            </div>
+            </div> */}
           </form>
         </main>
       </div>

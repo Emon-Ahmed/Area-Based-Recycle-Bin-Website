@@ -21,10 +21,10 @@ const productsSchema = new Schema({
 //     required: false,
 //     type: String,
 //   },
-//   productImage: {
-//     required: false,
-//     type: String,
-//   },
+  productImage: {
+    required: false,
+    type: String,
+  },
 });
 
 export const productsModel =

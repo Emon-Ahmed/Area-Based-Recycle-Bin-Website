@@ -9,7 +9,7 @@ export const POST = async (request) => {
     // productCategory,
     productPrice,
     // productLocation,
-    // productImage,
+    productImage,
   } = await request.json();
   await dbConnect();
   const newProduct = {
@@ -18,7 +18,7 @@ export const POST = async (request) => {
     // productCategory,
     productPrice,
     // productLocation,
-    // productImage,
+    productImage,
   };
   try {
     await productsModel.create(newProduct);
