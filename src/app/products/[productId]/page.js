@@ -3,7 +3,21 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Navbar from "@/components/custom-navbar";
 
-export default function Component() {
+export default function SingleProduct() {
+  const [products, setProducts] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`/api/products-show/${product._id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (isLoading) return <p>Loading...</p>;
+  if (!products) return <p>No products</p>;
   return (
     <div>
       <Navbar />
