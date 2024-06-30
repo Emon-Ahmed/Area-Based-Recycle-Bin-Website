@@ -6,10 +6,11 @@ export async function login(formData) {
     const response = await signIn("credentials", {
       email: formData.get("email"),
       password: formData.get("password"),
-      redirect: false,
+      // redirect: false,
     });
     return response;
   } catch (error) {
-    throw new Error(error);
+    // throw new Error(error);
+    console.log(error);
   }
 }
