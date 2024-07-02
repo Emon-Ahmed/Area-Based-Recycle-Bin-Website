@@ -11,7 +11,7 @@ import { auth } from "@/lib/auth";
 
 export default async function Navbar() {
   const session = await auth();
-  console.log(session);
+  // console.log(session);
   return (
     <header className="top-0 z-50 w-full bg-white shadow-sm dark:bg-gray-950">
       <div className="container flex items-center justify-between h-20 px-4 mx-auto md:px-6">

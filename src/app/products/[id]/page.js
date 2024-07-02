@@ -6,7 +6,7 @@ const Page = async ({params:{id}}) => {
   
   const product = await getProducts(id);
   
-  console.log(product);
+  // console.log(product);
   return (
     <div>
       <Navbar />
