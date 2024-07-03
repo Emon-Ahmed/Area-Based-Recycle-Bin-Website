@@ -14,9 +14,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getOrderList } from "@/queries/getOrder";
 import Link from "next/link";
 
-export default function OrderPage() {
+export default async function OrderPage() {
+  const ordersList = await getOrderList();
+  console.log(ordersList);
   return (
     <div className="flex flex-col w-full min-h-screen">
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-4">
@@ -47,40 +50,27 @@ export default function OrderPage() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    <TableRow className="bg-accent">
-                      <TableCell>
-                        <div className="font-medium">Liam Johnson</div>
-                      </TableCell>
-                      <TableCell className="hidden sm:table-cell">
-                        <Link href="/dashboard/orders/manage">Phone</Link>
-                      </TableCell>
-                      <TableCell className="hidden sm:table-cell">
-                        <Badge className="text-xs" variant="secondary">
-                          Fulfilled
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell">
-                        2023-06-23
-                      </TableCell>
-                      <TableCell className="text-right">$250.00</TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>
-                        <div className="font-medium">Olivia Smith</div>
-                      </TableCell>
-                      <TableCell className="hidden sm:table-cell">
-                      <Link href="/dashboard/orders/manage">Laptop</Link>
-                      </TableCell>
-                      <TableCell className="hidden sm:table-cell">
-                        <Badge className="text-xs" variant="outline">
-                          Declined
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell">
-                        2023-06-24
-                      </TableCell>
-                      <TableCell className="text-right">$150.00</TableCell>
-                    </TableRow>
+                    {ordersList.map((o, i) => {
+                      return (
+                        <TableRow className="bg-accent">
+                          <TableCell>
+                            <div className="font-medium">{o?.user}</div>
+                          </TableCell>
+                          <TableCell className="hidden sm:table-cell">
+                            <Link href="/dashboard/orders/manage">Phone</Link>
+                          </TableCell>
+                          <TableCell className="hidden sm:table-cell">
+                            <Badge className="text-xs" variant="secondary">
+                              Fulfilled
+                            </Badge>
+                          </TableCell>
+                          <TableCell className="hidden md:table-cell">
+                            2023-06-23
+                          </TableCell>
+                          <TableCell className="text-right">{o?.price}</TableCell>
+                        </TableRow>
+                      );
+                    })}
                   </TableBody>
                 </Table>
               </CardContent>
