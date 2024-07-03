@@ -1,16 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import RelatedProducts from "./relatedProducts";
 import Bid from "./bidding-card";
 
-const SingleProduct = ({ product }) => {
-  const [error, setError] = useState("");
+const SingleProduct = async ({ product, order }) => {
   const router = useRouter();
+
+  const [bids, setBids] = useState(null);
+  const [error, setError] = useState("");
+  const [isLoading, setLoading] = useState(true);
+
   async function onSubmit(event) {
     event.preventDefault();
     try {
@@ -31,9 +32,6 @@ const SingleProduct = ({ product }) => {
     }
   }
 
-  const [bids, setBids] = useState(null);
-  const [isLoading, setLoading] = useState(true);
-
   useEffect(() => {
     fetch("/api/order")
       .then((res) => res.json())
@@ -41,7 +39,7 @@ const SingleProduct = ({ product }) => {
         setBids(data);
         setLoading(false);
       });
-  }, []);
+  }, [bids]);
 
   if (isLoading) return <p>Loading...</p>;
   if (!bids) return <p>No Bids</p>;

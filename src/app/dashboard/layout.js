@@ -32,6 +32,7 @@ import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({ children }) {
   const session = await auth();
+  console.log(session);
   if(!session){
     redirect('/login')
   }

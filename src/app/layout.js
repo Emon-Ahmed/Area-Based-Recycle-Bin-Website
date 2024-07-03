@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import Footer from "@/components/custom-footer";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/lib/auth";
-import { dbConnect } from "@/lib/mongo";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -18,8 +17,8 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const conn  = await dbConnect();
   const session = auth();
+  console.log(session);
   return (
     <html lang="en" suppressHydrationWarning>
       <body
