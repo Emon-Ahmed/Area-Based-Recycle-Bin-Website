@@ -1,49 +1,14 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+"use server";
 import Bid from "./bidding-card";
+import Bidding from "./bidding";
+import { auth } from "@/lib/auth";
+// import { createOrder } from "@/app/actions/order";
 
-const SingleProduct = async ({ product, order }) => {
-  const router = useRouter();
-
-  const [bids, setBids] = useState(null);
-  const [error, setError] = useState("");
-  const [isLoading, setLoading] = useState(true);
-
-  async function onSubmit(event) {
-    event.preventDefault();
-    try {
-      const formData = new FormData(event.currentTarget);
-      const price = formData.get("price");
-      const res = await fetch("http://localhost:3000/api/order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          price,
-        }),
-      });
-      res.status === 201 && router.push("/checkout");
-    } catch (error) {
-      setError(error.message);
-    }
-  }
-
-  useEffect(() => {
-    fetch("/api/order")
-      .then((res) => res.json())
-      .then((data) => {
-        setBids(data);
-        setLoading(false);
-      });
-  }, [bids]);
-
-  if (isLoading) return <p>Loading...</p>;
-  if (!bids) return <p>No Bids</p>;
-
+const SingleProduct = async ({ product }) => {
+  // const order = await createOrder(product);
+  // console.log(order);
+  const session = await auth();
+  console.log(session);
   return (
     <div>
       <div className="bg-white dark:bg-gray-950">
@@ -68,27 +33,8 @@ const SingleProduct = async ({ product, order }) => {
             <div className="text-4xl font-bold">৳{product?.productPrice}</div>
             <div className="grid gap-4">
               <div className="flex items-center gap-4"></div>
-
-              <form onSubmit={onSubmit}>
-                <div className="flex items-center gap-4">
-                  <span className="text-gray-500 dark:text-gray-400">
-                    Bid a price:
-                  </span>
-                  <Input
-                    className="w-20 px-3 py-2 text-gray-900 border border-gray-300 rounded-md shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary dark:border-gray-700 dark:bg-gray-950 dark:text-gray-50"
-                    type="text"
-                    name="price"
-                    placeholder={product?.productPrice}
-                  />
-                  <Button type="submit" size="lg">
-                    Request A Purchase
-                  </Button>
-                </div>
-              </form>
-
-              {bids?.map((bid, i) => {
-                return <Bid key={i} bid={bid} />;
-              })}
+              <Bidding product={product} session={session} />
+              <Bid />
             </div>
           </div>
         </section>

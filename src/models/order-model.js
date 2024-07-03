@@ -7,8 +7,15 @@ const ordersSchema = new Schema({
     required: false,
     type: String,
   },
-  
-  user: { type: Schema.ObjectId, ref: "users" },
+  user: {
+    required: false,
+    type: String,
+  },
+  // product : {
+  //   required: false,
+  //   type: String,
+  // }
+  // user: { type: Schema.ObjectId, ref: "users" },
   product: { type: Schema.ObjectId, ref: "products" },
 
   active: {
