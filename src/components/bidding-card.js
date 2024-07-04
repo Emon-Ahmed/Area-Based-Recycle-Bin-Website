@@ -1,16 +1,11 @@
-"use client";
 import { Card } from "@/components/ui/card";
-import { useEffect, useState } from "react";
+import { getOrderByProductAndUser } from "@/queries/getOrder";
 
-export default function Bid() {
-  const [bids, setBids] = useState(null);
-  useEffect(() => {
-    fetch("/api/order")
-      .then((res) => res.json())
-      .then((data) => {
-        setBids(data);
-      });
-  }, []);
+export default async function Bid({ product, session }) {
+  const bids = await getOrderByProductAndUser(
+    session?.user?.email,
+    product?.id
+  );
   return (
     <>
       {bids?.map((bid, i) => {
@@ -18,7 +13,7 @@ export default function Bid() {
           <Card className="w-full max-w-sm overflow-hidden rounded-lg shadow-lg">
             <div className="flex items-center justify-between py-7 px-7 bg-primary">
               <h3 className="font-bold text-1xl text-primary-foreground">
-                User Name
+                {bid?.userName}
               </h3>
               <div className="text-3xl font-bold text-primary-foreground">
                 {bid?.price}

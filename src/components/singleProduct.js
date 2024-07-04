@@ -34,7 +34,7 @@ const SingleProduct = async ({ product }) => {
             <div className="grid gap-4">
               <div className="flex items-center gap-4"></div>
               <Bidding product={product} session={session} />
-              <Bid />
+              <Bid product={product} session={session}/>
             </div>
           </div>
         </section>

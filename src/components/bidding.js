@@ -14,6 +14,7 @@ const Bidding = ({ product, session }) => {
       const formData = new FormData(event.currentTarget);
       const price = formData.get("price");
       const user = session?.user?.email;
+      const userName = session?.user?.name;
       const product_id = product?.id;
       const res = await fetch("http://localhost:3000/api/order", {
         method: "POST",
@@ -23,10 +24,11 @@ const Bidding = ({ product, session }) => {
         body: JSON.stringify({
           price,
           user,
+          userName,
           product: product_id,
         }),
       });
-      res.status === 201 && router.push(`/product/${product_id}`);
+      res.status === 201 && router.push(`/products/${product_id}`);
     } catch (error) {
       console.log(error);
       setError(error.message);

@@ -52,7 +52,7 @@ export default async function OrderPage() {
                   <TableBody>
                     {ordersList.map((o, i) => {
                       return (
-                        <TableRow className="bg-accent">
+                        <TableRow key={i} className="bg-accent">
                           <TableCell>
                             <div className="font-medium">{o?.user}</div>
                           </TableCell>

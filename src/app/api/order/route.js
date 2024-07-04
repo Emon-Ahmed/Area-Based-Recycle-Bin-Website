@@ -3,11 +3,12 @@ import { ordersModel } from "@/models/order-model";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
-  const { product, price, user } = await request.json();
+  const { price, user, userName, product } = await request.json();
   await dbConnect();
   const order = {
     price,
     user,
+    userName,
     product,
   };
   console.log(order);

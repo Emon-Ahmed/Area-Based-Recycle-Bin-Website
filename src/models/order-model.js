@@ -4,20 +4,18 @@ import { productsModel } from "./products-model";
 
 const ordersSchema = new Schema({
   price: {
-    required: false,
+    required: true,
     type: String,
   },
   user: {
-    required: false,
+    required: true,
     type: String,
   },
-  // product : {
-  //   required: false,
-  //   type: String,
-  // }
-  // user: { type: Schema.ObjectId, ref: "users" },
+  userName: {
+    required: true,
+    type: String,
+  },
   product: { type: Schema.ObjectId, ref: "products" },
-
   active: {
     required: true,
     default: false,
