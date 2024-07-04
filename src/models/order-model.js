@@ -1,6 +1,4 @@
 import mongoose, { Schema } from "mongoose";
-import { userModel } from "./user-model";
-import { productsModel } from "./products-model";
 
 const ordersSchema = new Schema({
   price: {

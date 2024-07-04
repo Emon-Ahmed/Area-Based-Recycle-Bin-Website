@@ -28,7 +28,7 @@ const Bidding = ({ product, session }) => {
           product: product_id,
         }),
       });
-      res.status === 201 && router.push(`/products/${product_id}`);
+      res.status === 201 && router.refresh();
     } catch (error) {
       console.log(error);
       setError(error.message);

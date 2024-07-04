@@ -7,6 +7,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+import {
   Table,
   TableBody,
   TableCell,
@@ -19,7 +27,9 @@ import Link from "next/link";
 
 export default async function OrderPage() {
   const ordersList = await getOrderList();
-  console.log(ordersList);
+  const ordersUser = ordersList?.map((b) => b.users.map((u) => u));
+  console.log(ordersUser);
+
   return (
     <div className="flex flex-col w-full min-h-screen">
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-4">
@@ -36,7 +46,6 @@ export default async function OrderPage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Customer</TableHead>
                       <TableHead className="hidden sm:table-cell">
                         Product
                       </TableHead>
@@ -47,17 +56,17 @@ export default async function OrderPage() {
                         Date
                       </TableHead>
                       <TableHead className="text-right">Amount</TableHead>
+                      <TableHead>Bids</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
                     {ordersList.map((o, i) => {
                       return (
                         <TableRow key={i} className="bg-accent">
-                          <TableCell>
-                            <div className="font-medium">{o?.user}</div>
-                          </TableCell>
                           <TableCell className="hidden sm:table-cell">
-                            <Link href="/dashboard/orders/manage">Phone</Link>
+                            <Link href="/dashboard/orders/manage">
+                              {o?.productName}
+                            </Link>
                           </TableCell>
                           <TableCell className="hidden sm:table-cell">
                             <Badge className="text-xs" variant="secondary">
@@ -67,7 +76,25 @@ export default async function OrderPage() {
                           <TableCell className="hidden md:table-cell">
                             2023-06-23
                           </TableCell>
-                          <TableCell className="text-right">{o?.price}</TableCell>
+                          <TableCell className="text-right">
+                            {o?.price}
+                          </TableCell>
+                          <TableCell>
+                            <Select>
+                              <SelectTrigger className="w-[180px]">
+                                <SelectValue placeholder="Customer" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                {o?.users?.map((b, i) => {
+                                  return (
+                                    <SelectItem key={i} value={b?.userName}>
+                                      {b?.userName} - {b?.price}
+                                    </SelectItem>
+                                  );
+                                })}
+                              </SelectContent>
+                            </Select>
+                          </TableCell>
                         </TableRow>
                       );
                     })}

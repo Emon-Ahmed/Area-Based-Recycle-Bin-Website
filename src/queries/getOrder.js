@@ -1,28 +1,67 @@
 import { replaceMongoIdInArray } from "@/lib/convertData";
+import { dbConnect } from "@/lib/mongo";
 import { ordersModel } from "@/models/order-model";
-import { productsModel } from "@/models/products-model";
-
+await dbConnect();
 export async function getOrderList() {
   try {
+    await dbConnect();
     const orders = await ordersModel.find({}).populate("product").lean();
-    console.log(orders);
-    return replaceMongoIdInArray(orders);
+    const transformedArray = transformArray(orders);
+    return transformedArray;
   } catch (error) {
     console.log("Error fetching order list:", error);
-    // throw new Error("Failed to fetch order list");
   }
 }
-
-
 
 export async function getOrderByProductAndUser(userEmail, product_ID) {
   try {
-    const orders = await ordersModel.find({user: userEmail, product: product_ID}).populate("product").lean();
-    console.log(orders);
+    const orders = await ordersModel
+      .find({ user: userEmail, product: product_ID })
+      .populate("product")
+      .lean();
     return replaceMongoIdInArray(orders);
   } catch (error) {
     console.log("Error fetching order list:", error);
-    // throw new Error("Failed to fetch order list");
   }
 }
 
+export async function getOrderByProduct(product_ID) {
+  try {
+    const orders = await ordersModel
+      .find({ product: product_ID })
+      .populate("product")
+      .lean();
+    return replaceMongoIdInArray(orders);
+  } catch (error) {
+    console.log("Error fetching order list:", error);
+  }
+}
+
+const transformArray = (arr) => {
+  const result = [];
+  const productMap = {};
+  arr.forEach((item) => {
+    const productId = item.product._id;
+    if (!productMap[productId]) {
+      productMap[productId] = {
+        // id: arr._id,
+        productName: item.product.productName,
+        product_id: productId,
+        users: [],
+      };
+      result.push(productMap[productId]);
+    }
+
+    productMap[productId].users.push({
+      id: item._id,
+      email: item.user,
+      userName: item.userName,
+      price: item.price,
+      active: item.active,
+      createdOn: item.createdOn,
+      modifiedOn: item.modifiedOn,
+    });
+  });
+
+  return result;
+};

@@ -1,11 +1,8 @@
 import { Card } from "@/components/ui/card";
-import { getOrderByProductAndUser } from "@/queries/getOrder";
+import { getOrderByProduct } from "@/queries/getOrder";
 
-export default async function Bid({ product, session }) {
-  const bids = await getOrderByProductAndUser(
-    session?.user?.email,
-    product?.id
-  );
+export default async function Bid({ product }) {
+  const bids = await getOrderByProduct(product?.id);
   return (
     <>
       {bids?.map((bid, i) => {
