@@ -19,6 +19,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import Loading from "@/app/loading";
 
 const ProductTable = () => {
   const [products, setProducts] = useState(null);
@@ -33,7 +34,7 @@ const ProductTable = () => {
       });
   }, []);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
   if (!products) return <p>No products</p>;
   return (
     <div>
@@ -56,7 +57,7 @@ const ProductTable = () => {
         <TableBody>
           {products?.map((product, i) => {
             return (
-              <TableRow >
+              <TableRow>
                 <TableCell className="hidden sm:table-cell">
                   <Image
                     alt="Product image"
@@ -67,12 +68,14 @@ const ProductTable = () => {
                   />
                 </TableCell>
                 <TableCell className="font-medium">
-                {product?.productName}
+                  {product?.productName}
                 </TableCell>
                 <TableCell>
                   <Badge variant="outline">Draft</Badge>
                 </TableCell>
-                <TableCell className="hidden md:table-cell">${product?.productPrice}</TableCell>
+                <TableCell className="hidden md:table-cell">
+                  ${product?.productPrice}
+                </TableCell>
                 <TableCell className="hidden md:table-cell">25</TableCell>
                 <TableCell className="hidden md:table-cell">
                   2023-07-12 10:42 AM

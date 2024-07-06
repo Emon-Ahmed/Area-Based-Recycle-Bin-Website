@@ -1,4 +1,4 @@
-import Product from "./product";
+import ShopProducts from "./shop-products";
 
 export default function FeaturedProducts() {
   return (
@@ -16,16 +16,10 @@ export default function FeaturedProducts() {
               </p>
             </div>
           </div>
-          <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-          </div>
+          <ShopProducts />
+          {/* <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                <ShopProducts/>
+          </div> */}
         </div>
       </div>
     </div>

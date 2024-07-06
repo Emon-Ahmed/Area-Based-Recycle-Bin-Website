@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/app/loading";
 import Product from "./product";
 import { useState, useEffect } from "react";
 
@@ -15,7 +16,7 @@ export default function ShopProducts() {
       });
   }, []);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
   if (!products) return <p>No products</p>;
 
   return (
@@ -24,9 +25,8 @@ export default function ShopProducts() {
         <div className="grid gap-6 px-4 mx-auto md:gap-8 ">
           <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {products?.map((product, i) => {
-                  return <Product key={i} product={product} />;
-                })
-              }
+              return <Product key={i} product={product} />;
+            })}
           </div>
         </div>
       </div>
