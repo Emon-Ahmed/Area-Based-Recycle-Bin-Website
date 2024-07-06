@@ -6,13 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 import {
   Table,
@@ -24,6 +17,7 @@ import {
 } from "@/components/ui/table";
 import { getOrderList } from "@/queries/getOrder";
 import Link from "next/link";
+import SelectBid from "./_component/select-bid";
 
 export default async function OrderPage() {
   const ordersList = await getOrderList();
@@ -55,7 +49,7 @@ export default async function OrderPage() {
                       <TableHead className="hidden md:table-cell">
                         Date
                       </TableHead>
-                      <TableHead className="text-right">Amount</TableHead>
+                      {/* <TableHead className="text-right">Amount</TableHead> */}
                       <TableHead>Bids</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -76,25 +70,10 @@ export default async function OrderPage() {
                           <TableCell className="hidden md:table-cell">
                             2023-06-23
                           </TableCell>
-                          <TableCell className="text-right">
+                          {/* <TableCell className="text-right">
                             {o?.price}
-                          </TableCell>
-                          <TableCell>
-                            <Select>
-                              <SelectTrigger className="w-[180px]">
-                                <SelectValue placeholder="Customer" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                {o?.users?.map((b, i) => {
-                                  return (
-                                    <SelectItem key={i} value={b?.userName}>
-                                      {b?.userName} - {b?.price}
-                                    </SelectItem>
-                                  );
-                                })}
-                              </SelectContent>
-                            </Select>
-                          </TableCell>
+                          </TableCell> */}
+                          <SelectBid o={o} />
                         </TableRow>
                       );
                     })}

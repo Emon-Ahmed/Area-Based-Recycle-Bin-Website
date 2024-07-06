@@ -3,8 +3,8 @@ import { dbConnect } from "@/lib/mongo";
 import { ordersModel } from "@/models/order-model";
 await dbConnect();
 export async function getOrderList() {
+  await dbConnect();
   try {
-    await dbConnect();
     const orders = await ordersModel.find({}).populate("product").lean();
     const transformedArray = transformArray(orders);
     return transformedArray;
