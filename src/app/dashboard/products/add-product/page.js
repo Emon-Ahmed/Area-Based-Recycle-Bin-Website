@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, Upload } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -23,12 +23,15 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { CldUploadWidget } from "next-cloudinary";
+import Loading from "@/app/loading";
 
 export default function AddProduct() {
   const [error, setError] = useState("");
   const router = useRouter();
   const [resource, setResource] = useState();
   const productImage = resource?.secure_url;
+  const [productCategory, setProductCategory] = useState(null);
+  console.log(productCategory);
   async function onSubmit(event) {
     event.preventDefault();
     try {
@@ -36,9 +39,9 @@ export default function AddProduct() {
       const productName = formData.get("productName");
       const productDescription = formData.get("productDescription");
       // const productCategory = formData.get("productCategory");
+
       const productPrice = formData.get("productPrice");
       // const productLocation = formData.get("productLocation");
-      // const productImage = formData.get("productImage");
       const res = await fetch("http://localhost:3000/api/products", {
         method: "POST",
         headers: {
@@ -47,7 +50,7 @@ export default function AddProduct() {
         body: JSON.stringify({
           productName,
           productDescription,
-          // productCategory,
+          productCategory,
           productPrice,
           productImage,
           // productLocation,
@@ -58,6 +61,21 @@ export default function AddProduct() {
       setError(error.message);
     }
   }
+  const [category, setCategory] = useState(null);
+
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/category", { cache: "no-cache" })
+      .then((res) => res.json())
+      .then((data) => {
+        setCategory(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (isLoading) return <Loading />;
+  if (!category) return <p>No products</p>;
   return (
     <div className="flex flex-col w-full min-h-screen">
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-4">
@@ -128,7 +146,7 @@ export default function AddProduct() {
                     <div className="grid gap-6 sm:grid-cols-3">
                       <div className="grid gap-3">
                         <Label htmlFor="category">Category</Label>
-                        <Select>
+                        <Select onValueChange={setProductCategory}>
                           <SelectTrigger
                             id="category"
                             name="productCategory"
@@ -137,13 +155,13 @@ export default function AddProduct() {
                             <SelectValue placeholder="Select category" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="clothing">Clothing</SelectItem>
-                            <SelectItem value="electronics">
-                              Electronics
-                            </SelectItem>
-                            <SelectItem value="accessories">
-                              Accessories
-                            </SelectItem>
+                            {category?.map((category, i) => {
+                              return (
+                                <SelectItem value={category?.name}>
+                                  {category?.name}
+                                </SelectItem>
+                              );
+                            })}
                           </SelectContent>
                         </Select>
                       </div>
@@ -239,7 +257,11 @@ export default function AddProduct() {
                               open();
                             }
                             return (
-                              <Button className="flex items-center" variant="outline" onClick={handleOnClick}>
+                              <Button
+                                className="flex items-center"
+                                variant="outline"
+                                onClick={handleOnClick}
+                              >
                                 Upload an Image
                               </Button>
                             );

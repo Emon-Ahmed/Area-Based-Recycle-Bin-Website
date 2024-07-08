@@ -9,10 +9,10 @@ const productsSchema = new Schema({
     required: false,
     type: String,
   },
-  //   productCategory: {
-  //     required: false,
-  //     type: String,
-  //   },
+    productCategory: {
+      required: false,
+      type: String,
+    },
   productPrice: {
     required: false,
     type: String,

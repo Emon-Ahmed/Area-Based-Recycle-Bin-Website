@@ -20,6 +20,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Loading from "@/app/loading";
+import DeleteButton from "./delete-product";
 
 const ProductTable = () => {
   const [products, setProducts] = useState(null);
@@ -91,7 +92,9 @@ const ProductTable = () => {
                     <DropdownMenuContent align="end">
                       <DropdownMenuLabel>Actions</DropdownMenuLabel>
                       <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem>Delete</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <DeleteButton product={product} />
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>

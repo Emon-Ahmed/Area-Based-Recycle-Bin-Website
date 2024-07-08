@@ -29,7 +29,7 @@ const SingleProduct = async ({ product }) => {
             <p className="text-lg text-gray-500 dark:text-gray-400 md:text-xl">
               {product?.productDescription}
             </p>
-
+          <p>{product?.productCategory}</p>
             <div className="text-4xl font-bold">৳{product?.productPrice}</div>
             <div className="grid gap-4">
               <div className="flex items-center gap-4"></div>

@@ -70,7 +70,7 @@ export default function Page() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/category")
+    fetch("/api/category", { cache: "no-cache" })
       .then((res) => res.json())
       .then((data) => {
         setCategory(data);
@@ -148,30 +148,11 @@ export default function Page() {
                           <TableCell>
                             <div className="font-medium">{category?.name}</div>
                           </TableCell>
-
                           <TableCell className="hidden md:table-cell">
                             {formatMyDate(category?.createdOn)}
                           </TableCell>
                           <TableCell>
                             <DeleteButton category={category} />
-                            {/* <DropdownMenu>
-                              <DropdownMenuTrigger asChild>
-                                <Button
-                                  aria-haspopup="true"
-                                  size="icon"
-                                  variant="ghost"
-                                >
-                                  <MoreHorizontal className="w-4 h-4" />
-                                  <span className="sr-only">Toggle menu</span>
-                                </Button>
-                              </DropdownMenuTrigger>
-                              <DropdownMenuContent align="end">
-                                <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                <DropdownMenuItem>
-                                  <DeleteButton category={category}/>
-                                </DropdownMenuItem>
-                              </DropdownMenuContent>
-                            </DropdownMenu> */}
                           </TableCell>
                         </TableRow>
                       );

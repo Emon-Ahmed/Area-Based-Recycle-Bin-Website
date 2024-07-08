@@ -6,7 +6,7 @@ export const POST = async (request) => {
   const {
     productName,
     productDescription,
-    // productCategory,
+    productCategory,
     productPrice,
     // productLocation,
     productImage,
@@ -15,7 +15,7 @@ export const POST = async (request) => {
   const newProduct = {
     productName,
     productDescription,
-    // productCategory,
+    productCategory,
     productPrice,
     // productLocation,
     productImage,
