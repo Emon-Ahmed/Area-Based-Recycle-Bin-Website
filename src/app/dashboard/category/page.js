@@ -1,9 +1,9 @@
+"use client";
 import { MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -33,9 +33,54 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import Loading from "@/app/loading";
+import { formatMyDate } from "@/lib/date";
+import DeleteButton from "./_component/delete-button";
+const DialogClose = DialogPrimitive.Close;
 
-export default function Customers() {
+export default function Page() {
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  async function onSubmit(event) {
+    event.preventDefault();
+    try {
+      const formData = new FormData(event.currentTarget);
+      const name = formData.get("name");
+      const res = await fetch("http://localhost:3000/api/category", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+        }),
+      });
+      res.status === 201 && DialogClose + router.refresh();
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    }
+  }
+
+  const [category, setCategory] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/category")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategory(data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (isLoading) return <Loading />;
+  if (!category) return <p>No products</p>;
+
   return (
     <div className="flex flex-col w-full min-h-screen">
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-4">
@@ -51,18 +96,14 @@ export default function Customers() {
                     </CardDescription>
                   </div>
                   <div className="text-right">
-                    <Link href="/dashboard/category/">
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button variant="outline">Add Category</Button>
-                        </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px]">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline">Add Category</Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[425px]">
+                        <form onSubmit={onSubmit}>
                           <DialogHeader>
                             <DialogTitle>Add Category</DialogTitle>
-                            {/* <DialogDescription>
-                              Make changes to your profile here. Click save when
-                              you're done.
-                            </DialogDescription> */}
                           </DialogHeader>
                           <div className="grid gap-4 py-4">
                             <div className="grid items-center grid-cols-4 gap-4">
@@ -71,6 +112,7 @@ export default function Customers() {
                               </Label>
                               <Input
                                 id="name"
+                                name="name"
                                 defaultValue="Dress"
                                 className="col-span-3"
                               />
@@ -79,9 +121,9 @@ export default function Customers() {
                           <DialogFooter>
                             <Button type="submit">Save changes</Button>
                           </DialogFooter>
-                        </DialogContent>
-                      </Dialog>
-                    </Link>
+                        </form>
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </div>
               </CardHeader>
@@ -90,9 +132,7 @@ export default function Customers() {
                   <TableHeader>
                     <TableRow>
                       <TableHead>Name </TableHead>
-                      <TableHead className="hidden sm:table-cell">
-                        Type
-                      </TableHead>
+
                       <TableHead className="hidden md:table-cell">
                         Date
                       </TableHead>
@@ -102,66 +142,40 @@ export default function Customers() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    <TableRow className="bg-accent">
-                      <TableCell>
-                        <div className="font-medium">Liam Johnson</div>
-                      </TableCell>
-                      <TableCell className="hidden sm:table-cell">
-                        Sale
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell">
-                        2023-06-23
-                      </TableCell>
-                      <TableCell>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="w-4 h-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>Edit</DropdownMenuItem>
-                            <DropdownMenuItem>Delete</DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>
-                        <div className="font-medium">Liam Johnson</div>
-                      </TableCell>
-                      <TableCell className="hidden sm:table-cell">
-                        Sale
-                      </TableCell>
-                      <TableCell className="hidden md:table-cell">
-                        2023-06-23
-                      </TableCell>
-                      <TableCell>
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button
-                              aria-haspopup="true"
-                              size="icon"
-                              variant="ghost"
-                            >
-                              <MoreHorizontal className="w-4 h-4" />
-                              <span className="sr-only">Toggle menu</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end">
-                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                            <DropdownMenuItem>Edit</DropdownMenuItem>
-                            <DropdownMenuItem>Delete</DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                      </TableCell>
-                    </TableRow>
+                    {category?.map((category, i) => {
+                      return (
+                        <TableRow key={i} className="bg-accent">
+                          <TableCell>
+                            <div className="font-medium">{category?.name}</div>
+                          </TableCell>
+
+                          <TableCell className="hidden md:table-cell">
+                            {formatMyDate(category?.createdOn)}
+                          </TableCell>
+                          <TableCell>
+                            <DeleteButton category={category} />
+                            {/* <DropdownMenu>
+                              <DropdownMenuTrigger asChild>
+                                <Button
+                                  aria-haspopup="true"
+                                  size="icon"
+                                  variant="ghost"
+                                >
+                                  <MoreHorizontal className="w-4 h-4" />
+                                  <span className="sr-only">Toggle menu</span>
+                                </Button>
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="end">
+                                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                <DropdownMenuItem>
+                                  <DeleteButton category={category}/>
+                                </DropdownMenuItem>
+                              </DropdownMenuContent>
+                            </DropdownMenu> */}
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
                   </TableBody>
                 </Table>
               </CardContent>

@@ -14,6 +14,7 @@ export async function getOrderList() {
 }
 
 export async function getOrderByProductAndUser(userEmail, product_ID) {
+  await dbConnect();
   try {
     const orders = await ordersModel
       .find({ user: userEmail, product: product_ID })
@@ -26,6 +27,7 @@ export async function getOrderByProductAndUser(userEmail, product_ID) {
 }
 
 export async function getOrderByProduct(product_ID) {
+  await dbConnect();
   try {
     const orders = await ordersModel
       .find({ product: product_ID })
