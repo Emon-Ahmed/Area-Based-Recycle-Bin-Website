@@ -5,7 +5,7 @@ import mongoClientPromise from "@/lib/mongoClientPromise";
 import { userModel } from "@/models/user-model";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { dbConnect } from "@/lib/mongo"
+import { dbConnect } from "@/lib/mongo";
 
 export const {
   handlers: { GET, POST },
@@ -27,12 +27,10 @@ export const {
       },
 
       async authorize(credentials) {
-        await dbConnect ();
+        await dbConnect();
         if (credentials == null) return null;
-        // console.log(credentials);
         try {
           const user = await userModel.findOne({ email: credentials.email });
-          console.log({ user });
           if (user) {
             const isMatch = await bcrypt.compare(
               credentials.password,

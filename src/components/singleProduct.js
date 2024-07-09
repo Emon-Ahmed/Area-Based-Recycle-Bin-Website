@@ -2,13 +2,9 @@
 import Bid from "./bidding-card";
 import Bidding from "./bidding";
 import { auth } from "@/lib/auth";
-// import { createOrder } from "@/app/actions/order";
 
 const SingleProduct = async ({ product }) => {
-  // const order = await createOrder(product);
-  // console.log(order);
   const session = await auth();
-  console.log(session);
   return (
     <div>
       <div className="bg-white dark:bg-gray-950">
@@ -45,62 +41,12 @@ const SingleProduct = async ({ product }) => {
                 <h2 className="mb-4 text-2xl font-bold md:text-3xl">
                   Product Details
                 </h2>
-                {/* <div className="space-y-4">
-                  <div>
-                    <h3 className="text-lg font-semibold">Specifications</h3>
-                    <ul className="space-y-2 text-gray-500 dark:text-gray-400">
-                      <li>
-                        <span className="font-semibold text-gray-900 dark:text-gray-50">
-                          Driver Size:
-                        </span>
-                        40mm
-                      </li>
-                      <li>
-                        <span className="font-semibold text-gray-900 dark:text-gray-50">
-                          Frequency Response:
-                        </span>
-                        20Hz - 20kHz
-                      </li>
-                      <li>
-                        <span className="font-semibold text-gray-900 dark:text-gray-50">
-                          Impedance:
-                        </span>
-                        32 Ohms
-                      </li>
-                      <li>
-                        <span className="font-semibold text-gray-900 dark:text-gray-50">
-                          Bluetooth Version:
-                        </span>
-                        5.0
-                      </li>
-                    </ul>
-                  </div>
-                </div> */}
                 <div
                   dangerouslySetInnerHTML={{
                     __html: product?.productDescription,
                   }}
                 />
               </div>
-              {/* <div>
-                <h2 className="mb-4 text-2xl font-bold md:text-3xl">Pricing</h2>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-lg font-semibold">Standard</h3>
-                    <p className="text-4xl font-bold">৳149.99</p>
-                    <p className="text-gray-500 dark:text-gray-400">
-                      Includes headphones and charging cable.
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold">Premium</h3>
-                    <p className="text-4xl font-bold">৳199.99</p>
-                    <p className="text-gray-500 dark:text-gray-400">
-                      Includes headphones, charging cable, and carrying case.
-                    </p>
-                  </div>
-                </div>
-              </div> */}
             </div>
           </div>
         </section>

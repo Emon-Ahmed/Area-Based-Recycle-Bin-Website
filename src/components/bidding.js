@@ -30,7 +30,6 @@ const Bidding = ({ product, session }) => {
       });
       res.status === 201 && router.refresh();
     } catch (error) {
-      console.log(error);
       setError(error.message);
     }
   }

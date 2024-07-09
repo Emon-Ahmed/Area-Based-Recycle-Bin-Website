@@ -21,10 +21,10 @@ const productsSchema = new Schema({
     required: false,
     type: String,
   },
-  //   productLocation: {
-  //     required: false,
-  //     type: String,
-  //   },
+  productLocation: {
+    required: false,
+    type: String,
+  },
   productImage: {
     required: true,
     type: String,

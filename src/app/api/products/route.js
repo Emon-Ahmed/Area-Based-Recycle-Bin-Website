@@ -8,7 +8,7 @@ export const POST = async (request) => {
     productDescription,
     productCategory,
     productPrice,
-    // productLocation,
+    productLocation,
     productShortDescription,
     productImage,
   } = await request.json();
@@ -19,7 +19,7 @@ export const POST = async (request) => {
     productDescription,
     productCategory,
     productPrice,
-    // productLocation,
+    productLocation,
     productImage,
   };
   try {

@@ -23,7 +23,6 @@ import { formatMyDate } from "@/lib/date";
 export default async function OrderPage() {
   const ordersList = await getOrderList();
   const ordersUser = ordersList?.map((b) => b.users.map((u) => u));
-  console.log(ordersUser);
 
   return (
     <div className="flex flex-col w-full min-h-screen">

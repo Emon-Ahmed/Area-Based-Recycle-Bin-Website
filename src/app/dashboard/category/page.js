@@ -61,7 +61,6 @@ export default function Page() {
       });
       res.status === 201 && DialogClose + router.refresh();
     } catch (error) {
-      console.log(error);
       setError(error.message);
     }
   }

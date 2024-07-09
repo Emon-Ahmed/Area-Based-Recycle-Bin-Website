@@ -11,14 +11,12 @@ export const POST = async (request) => {
     userName,
     product,
   };
-  console.log(order);
   try {
     await ordersModel.create(order);
     return new NextResponse("Order has been created", {
       status: 201,
     });
   } catch (err) {
-    console.log(err);
     return new NextResponse(err.message, {
       status: 500,
     });

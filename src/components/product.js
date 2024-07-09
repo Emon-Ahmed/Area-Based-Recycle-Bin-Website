@@ -29,10 +29,9 @@ const Product = ({ product }) => {
             </Link>
           </h3>
 
-          <p
-            className="text-sm text-gray-500 dark:text-gray-400"
-            dangerouslySetInnerHTML={{ __html: product?.productDescription }}
-          />
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            {product?.productShortDescription}
+          </p>
           <div className="flex items-center justify-between">
             <h4 className="text-base font-semibold md:text-lg">
               ${product?.productPrice}

@@ -32,7 +32,6 @@ import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({ children }) {
   const session = await auth();
-  console.log(session);
   if(!session){
     redirect('/login')
   }
@@ -95,13 +94,13 @@ export default async function DashboardLayout({ children }) {
                   <UsersRound className="w-4 h-4" />
                   All Customers
                 </Link>
-                {/* <Link
+                <Link
                   href="/dashboard/location"
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
                 >
                  <LocateFixed className="w-4 h-4" />
-                  Location
-                </Link> */}
+                  Location List
+                </Link>
                 <Link
                   href="/dashboard/settings"
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"

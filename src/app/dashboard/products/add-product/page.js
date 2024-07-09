@@ -30,7 +30,9 @@ export default function AddProduct() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [category, setCategory] = useState(null);
+  const [productLocation, setProductLocation] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  const [location, setLocation] = useState(null);
   const [resource, setResource] = useState();
   const [value, setValue] = useState("");
 
@@ -45,7 +47,6 @@ export default function AddProduct() {
       const productShortDescription = formData.get("productShortDescription");
       const productDescription = value;
       const productPrice = formData.get("productPrice");
-      // const productLocation = formData.get("productLocation");
       const res = await fetch("http://localhost:3000/api/products", {
         method: "POST",
         headers: {
@@ -58,7 +59,7 @@ export default function AddProduct() {
           productCategory,
           productPrice,
           productImage,
-          // productLocation,
+          productLocation,
         }),
       });
       res.status === 201 && productImage && router.push("/dashboard/products");
@@ -72,6 +73,15 @@ export default function AddProduct() {
       .then((res) => res.json())
       .then((data) => {
         setCategory(data);
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/location", { cache: "no-cache" })
+      .then((res) => res.json())
+      .then((data) => {
+        setLocation(data);
         setLoading(false);
       });
   }, []);
@@ -206,7 +216,24 @@ export default function AddProduct() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid gap-3"></div>
+                    <Select onValueChange={setProductLocation}>
+                      <SelectTrigger
+                        id="location"
+                        name="productCategory"
+                        aria-label="Select location"
+                      >
+                        <SelectValue placeholder="Select location" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {location?.map((location, i) => {
+                          return (
+                            <SelectItem value={location?.name}>
+                              {location?.name}
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectContent>
+                    </Select>
                   </CardContent>
                 </Card>
                 <Card
