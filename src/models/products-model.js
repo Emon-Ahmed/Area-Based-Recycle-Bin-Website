@@ -5,14 +5,18 @@ const productsSchema = new Schema({
     required: true,
     type: String,
   },
+  productShortDescription: {
+    required: false,
+    type: String,
+  },
   productDescription: {
     required: false,
     type: String,
   },
-    productCategory: {
-      required: false,
-      type: String,
-    },
+  productCategory: {
+    required: false,
+    type: String,
+  },
   productPrice: {
     required: false,
     type: String,
@@ -22,7 +26,7 @@ const productsSchema = new Schema({
   //     type: String,
   //   },
   productImage: {
-    required: false,
+    required: true,
     type: String,
   },
   createdOn: {

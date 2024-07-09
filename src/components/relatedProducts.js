@@ -27,7 +27,7 @@ const RelatedProducts = () => {
               <small className="text-sm leading-none text-gray-500 dark:text-gray-400">
                 True Wireless Earbuds
               </small>
-              <h4 className="font-semibold">$99.99</h4>
+              <h4 className="font-semibold">৳99.99</h4>
             </div>
           </div>
         </div>

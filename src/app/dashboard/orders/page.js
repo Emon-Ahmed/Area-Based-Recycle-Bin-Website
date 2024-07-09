@@ -18,6 +18,7 @@ import {
 import { getOrderList } from "@/queries/getOrder";
 import Link from "next/link";
 import SelectBid from "./_component/select-bid";
+import { formatMyDate } from "@/lib/date";
 
 export default async function OrderPage() {
   const ordersList = await getOrderList();
@@ -68,7 +69,7 @@ export default async function OrderPage() {
                             </Badge>
                           </TableCell>
                           <TableCell className="hidden md:table-cell">
-                            2023-06-23
+                            {formatMyDate(o?.createdOn)}
                           </TableCell>
                           {/* <TableCell className="text-right">
                             {o?.price}

@@ -21,6 +21,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Loading from "@/app/loading";
 import DeleteButton from "./delete-product";
+import { formatMyDate } from "@/lib/date";
 
 const ProductTable = () => {
   const [products, setProducts] = useState(null);
@@ -48,7 +49,6 @@ const ProductTable = () => {
             <TableHead>Name</TableHead>
             <TableHead>Status</TableHead>
             <TableHead className="hidden md:table-cell">Price</TableHead>
-            <TableHead className="hidden md:table-cell">Total Sales</TableHead>
             <TableHead className="hidden md:table-cell">Created at</TableHead>
             <TableHead>
               <span className="sr-only">Actions</span>
@@ -72,14 +72,13 @@ const ProductTable = () => {
                   {product?.productName}
                 </TableCell>
                 <TableCell>
-                  <Badge variant="outline">Draft</Badge>
+                  <Badge variant="outline">Active</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  ${product?.productPrice}
+                  ৳{product?.productPrice}
                 </TableCell>
-                <TableCell className="hidden md:table-cell">25</TableCell>
                 <TableCell className="hidden md:table-cell">
-                  2023-07-12 10:42 AM
+                  {formatMyDate(product?.createdOn)}
                 </TableCell>
                 <TableCell>
                   <DropdownMenu>

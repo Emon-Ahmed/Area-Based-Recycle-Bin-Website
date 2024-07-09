@@ -9,11 +9,13 @@ export const POST = async (request) => {
     productCategory,
     productPrice,
     // productLocation,
+    productShortDescription,
     productImage,
   } = await request.json();
   await dbConnect();
   const newProduct = {
     productName,
+    productShortDescription,
     productDescription,
     productCategory,
     productPrice,
@@ -31,5 +33,3 @@ export const POST = async (request) => {
     });
   }
 };
-
-

@@ -1,9 +1,8 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, Upload } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { useRouter } from "next/navigation";
+import { ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -21,25 +20,30 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
 import { CldUploadWidget } from "next-cloudinary";
 import Loading from "@/app/loading";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function AddProduct() {
-  const [error, setError] = useState("");
   const router = useRouter();
+  const [error, setError] = useState("");
+  const [category, setCategory] = useState(null);
+  const [isLoading, setLoading] = useState(true);
   const [resource, setResource] = useState();
-  const productImage = resource?.secure_url;
+  const [value, setValue] = useState("");
+
+  const productImage = resource?.secure_url || "/placeholder.svg";
   const [productCategory, setProductCategory] = useState(null);
-  console.log(productCategory);
+
   async function onSubmit(event) {
     event.preventDefault();
     try {
       const formData = new FormData(event.currentTarget);
       const productName = formData.get("productName");
-      const productDescription = formData.get("productDescription");
-      // const productCategory = formData.get("productCategory");
-
+      const productShortDescription = formData.get("productShortDescription");
+      const productDescription = value;
       const productPrice = formData.get("productPrice");
       // const productLocation = formData.get("productLocation");
       const res = await fetch("http://localhost:3000/api/products", {
@@ -50,6 +54,7 @@ export default function AddProduct() {
         body: JSON.stringify({
           productName,
           productDescription,
+          productShortDescription,
           productCategory,
           productPrice,
           productImage,
@@ -61,9 +66,6 @@ export default function AddProduct() {
       setError(error.message);
     }
   }
-  const [category, setCategory] = useState(null);
-
-  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/category", { cache: "no-cache" })
@@ -90,11 +92,8 @@ export default function AddProduct() {
                 <span className="sr-only">Back</span>
               </Button>
               <h1 className="flex-1 text-xl font-semibold tracking-tight shrink-0 whitespace-nowrap sm:grow-0">
-                Pro Controller
+                Add Product
               </h1>
-              <Badge variant="outline" className="ml-auto sm:ml-0">
-                In stock
-              </Badge>
               <div className="items-center hidden gap-2 md:ml-auto md:flex">
                 <Button variant="outline" size="sm">
                   Discard
@@ -127,12 +126,22 @@ export default function AddProduct() {
                         />
                       </div>
                       <div className="grid gap-3">
-                        <Label htmlFor="description">Description</Label>
+                        <Label htmlFor="description">Short Description</Label>
                         <Textarea
                           id="description"
-                          name="productDescription"
+                          name="productShortDescription"
                           placeholder="Product Description"
+                          className="min-h-16"
+                        />
+                      </div>
+
+                      <div className="grid gap-3 mb-12">
+                        <Label htmlFor="description">Full Description</Label>
+                        <ReactQuill
                           className="min-h-32"
+                          theme="snow"
+                          value={value}
+                          onChange={setValue}
                         />
                       </div>
                     </div>
@@ -222,28 +231,6 @@ export default function AddProduct() {
                         width="300"
                       />
                       <div className="grid gap-2 grid-cols">
-                        {/* <button>
-                          <Image
-                            alt="Product image"
-                            className="object-cover w-full rounded-md aspect-square"
-                            height="84"
-                            src="/placeholder.svg"
-                            width="84"
-                          />
-                        </button> */}
-                        {/* <button>
-                          <Image
-                            alt="Product image"
-                            className="object-cover w-full rounded-md aspect-square"
-                            height="84"
-                            src="/placeholder.svg"
-                            width="84"
-                          />
-                        </button> */}
-                        {/* <button className="flex items-center justify-center w-full border border-dashed rounded-md aspect-square">
-                          <Upload className="w-4 h-4 text-muted-foreground" />
-                          <span className="sr-only">Upload</span>
-                        </button> */}
                         <CldUploadWidget
                           uploadPreset="recycle-bin"
                           onSuccess={(result, { widget }) => {
@@ -257,13 +244,13 @@ export default function AddProduct() {
                               open();
                             }
                             return (
-                              <Button
-                                className="flex items-center"
+                              <div
+                                className="px-4 py-2 text-center border border-input bg-background hover:bg-accent hover:text-accent-foreground"
                                 variant="outline"
                                 onClick={handleOnClick}
                               >
                                 Upload an Image
-                              </Button>
+                              </div>
                             );
                           }}
                         </CldUploadWidget>
@@ -273,17 +260,6 @@ export default function AddProduct() {
                 </Card>
               </div>
             </div>
-            {/* <div className="flex items-center justify-center gap-2 md:hidden">
-              <Link href="/dashboard/products">
-                <Button variant="outline" size="sm">
-                  Discard 2
-                </Button>
-              </Link>
-
-              <Button type="submit" size="sm">
-                Save Product 2
-              </Button>
-            </div> */}
           </form>
         </main>
       </div>

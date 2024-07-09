@@ -44,7 +44,7 @@ export default async function Dashboard() {
               <DollarSign className="w-4 h-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">$45,231.89</div>
+              <div className="text-2xl font-bold">৳45,231.89</div>
               <p className="text-xs text-muted-foreground">
                 +20.1% from last month
               </p>
@@ -141,7 +141,7 @@ export default async function Dashboard() {
                     <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
                       2023-06-23
                     </TableCell>
-                    <TableCell className="text-right">$250.00</TableCell>
+                    <TableCell className="text-right">৳250.00</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>
@@ -161,7 +161,7 @@ export default async function Dashboard() {
                     <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
                       2023-06-24
                     </TableCell>
-                    <TableCell className="text-right">$150.00</TableCell>
+                    <TableCell className="text-right">৳150.00</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>

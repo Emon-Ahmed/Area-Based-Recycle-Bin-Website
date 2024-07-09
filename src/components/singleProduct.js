@@ -27,14 +27,14 @@ const SingleProduct = async ({ product }) => {
               {product?.productName}
             </h1>
             <p className="text-lg text-gray-500 dark:text-gray-400 md:text-xl">
-              {product?.productDescription}
+              {product?.productShortDescription}
             </p>
-          <p>{product?.productCategory}</p>
+            <p>{product?.productCategory}</p>
             <div className="text-4xl font-bold">৳{product?.productPrice}</div>
             <div className="grid gap-4">
               <div className="flex items-center gap-4"></div>
               <Bidding product={product} session={session} />
-              <Bid product={product} session={session}/>
+              <Bid product={product} session={session} />
             </div>
           </div>
         </section>
@@ -45,7 +45,7 @@ const SingleProduct = async ({ product }) => {
                 <h2 className="mb-4 text-2xl font-bold md:text-3xl">
                   Product Details
                 </h2>
-                <div className="space-y-4">
+                {/* <div className="space-y-4">
                   <div>
                     <h3 className="text-lg font-semibold">Specifications</h3>
                     <ul className="space-y-2 text-gray-500 dark:text-gray-400">
@@ -75,27 +75,32 @@ const SingleProduct = async ({ product }) => {
                       </li>
                     </ul>
                   </div>
-                </div>
+                </div> */}
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: product?.productDescription,
+                  }}
+                />
               </div>
-              <div>
+              {/* <div>
                 <h2 className="mb-4 text-2xl font-bold md:text-3xl">Pricing</h2>
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-lg font-semibold">Standard</h3>
-                    <p className="text-4xl font-bold">$149.99</p>
+                    <p className="text-4xl font-bold">৳149.99</p>
                     <p className="text-gray-500 dark:text-gray-400">
                       Includes headphones and charging cable.
                     </p>
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold">Premium</h3>
-                    <p className="text-4xl font-bold">$199.99</p>
+                    <p className="text-4xl font-bold">৳199.99</p>
                     <p className="text-gray-500 dark:text-gray-400">
                       Includes headphones, charging cable, and carrying case.
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
