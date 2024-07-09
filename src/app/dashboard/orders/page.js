@@ -68,7 +68,7 @@ export default async function OrderPage() {
                             </Badge>
                           </TableCell>
                           <TableCell className="hidden md:table-cell">
-                            {formatMyDate(o?.createdOn)}
+                            {/* {formatMyDate(o?.createdOn)} */}
                           </TableCell>
                           {/* <TableCell className="text-right">
                             {o?.price}
