@@ -13,7 +13,7 @@ export default async function Navbar() {
   const session = await auth();
   return (
     <header className="top-0 z-50 w-full bg-white shadow-sm dark:bg-gray-950">
-      <div className="container flex items-center justify-between h-20 px-4 mx-auto md:px-6">
+      <div className="container flex items-center justify-between h-24 px-4 mx-auto md:px-6">
         <Link className="flex items-center gap-2" href="/">
           <RiLuggageCartLine className="w-6 h-6" />
 

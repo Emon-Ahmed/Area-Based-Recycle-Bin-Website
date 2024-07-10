@@ -7,10 +7,12 @@ import {
 } from "@/components/ui/card";
 import Navbar from "@/components/custom-navbar";
 import LoginFormComponent from "@/components/login-form";
+import TopBar from "@/components/top-bar";
 
 export default function LoginForm() {
   return (
     <div>
+      <TopBar />
       <Navbar />
       <Card className="max-w-sm mx-auto my-32">
         <CardHeader>

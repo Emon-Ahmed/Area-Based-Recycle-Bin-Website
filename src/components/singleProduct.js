@@ -2,6 +2,9 @@
 import Bid from "./bidding-card";
 import Bidding from "./bidding";
 import { auth } from "@/lib/auth";
+import { Card } from "./ui/card";
+import { Badge } from "./ui/badge";
+import Link from "next/link";
 
 const SingleProduct = async ({ product }) => {
   const session = await auth();
@@ -25,13 +28,27 @@ const SingleProduct = async ({ product }) => {
             <p className="text-lg text-gray-500 dark:text-gray-400 md:text-xl">
               {product?.productShortDescription}
             </p>
-            <p>{product?.productCategory}</p>
+            <Badge>
+              <p>{product?.productCategory}</p>
+            </Badge>
             <div className="text-4xl font-bold">৳{product?.productPrice}</div>
-            <div className="grid gap-4">
-              <div className="flex items-center gap-4"></div>
-              <Bidding product={product} session={session} />
-              <Bid product={product} session={session} />
-            </div>
+            {session ? (
+              <div className="grid gap-4">
+                <div className="flex items-center gap-4"></div>
+                <Bidding product={product} session={session} />
+                <Bid product={product} session={session} />
+              </div>
+            ) : (
+              <Card className="w-full max-w-sm overflow-hidden rounded-lg shadow-lg">
+                <Link href="/login">
+                  <div className="flex items-center justify-between py-7 px-7 bg-primary">
+                    <h3 className="font-bold text-1xl text-primary-foreground">
+                      Login First For Bidding / Buy
+                    </h3>
+                  </div>
+                </Link>
+              </Card>
+            )}
           </div>
         </section>
         <section className="py-12 bg-gray-100 dark:bg-gray-800 md:py-20">

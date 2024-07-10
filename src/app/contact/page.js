@@ -15,10 +15,12 @@ import Balancer from "react-wrap-balancer";
 import Navbar from "@/components/custom-navbar";
 import { RiLuggageCartLine } from "react-icons/ri";
 import Link from "next/link";
+import TopBar from "@/components/top-bar";
 
 export default function Component() {
   return (
     <div>
+      <TopBar />
       <Navbar />
       <div className="container my-24">
         <Section className="my-16">

@@ -6,10 +6,12 @@ import FeatureRight from "@/components/feature-text-right";
 import FeaturedCategory from "@/components/featured-category";
 import FeaturedProducts from "@/components/featured-products";
 import Banner from "@/components/main-banner";
+import TopBar from "@/components/top-bar";
 
 export default function Home() {
   return (
     <div>
+      <TopBar/>
       <Navbar />
       <Banner />
       <FeaturedCategory />

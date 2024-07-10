@@ -32,8 +32,8 @@ import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({ children }) {
   const session = await auth();
-  if(!session){
-    redirect('/login')
+  if (!session) {
+    redirect("/login");
   }
   return (
     <div>
@@ -60,6 +60,13 @@ export default async function DashboardLayout({ children }) {
                   Dashboard
                 </Link>
                 <Link
+                  href="/dashboard/my-orders"
+                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
+                >
+                  <ShoppingCart className="w-4 h-4" />
+                  My Orders
+                </Link>
+                <Link
                   href="/dashboard/orders"
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
                 >
@@ -74,18 +81,18 @@ export default async function DashboardLayout({ children }) {
                   Add Products
                 </Link>
                 <Link
-                  href="/dashboard/category"
-                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
-                >
-                  <PackageSearch className="w-4 h-4" />
-                  Manage Category
-                </Link>
-                <Link
                   href="/dashboard/products"
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
                 >
                   <Package className="w-4 h-4" />
                   Manage Products
+                </Link>
+                <Link
+                  href="/dashboard/category"
+                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
+                >
+                  <PackageSearch className="w-4 h-4" />
+                  Manage Category
                 </Link>
                 <Link
                   href="/dashboard/customers"
@@ -98,7 +105,7 @@ export default async function DashboardLayout({ children }) {
                   href="/dashboard/location"
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
                 >
-                 <LocateFixed className="w-4 h-4" />
+                  <LocateFixed className="w-4 h-4" />
                   Location List
                 </Link>
                 <Link
@@ -211,7 +218,9 @@ export default async function DashboardLayout({ children }) {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <Link href="/dashboard">
-                  <DropdownMenuLabel>{session?.user?.name}'s Account</DropdownMenuLabel>
+                  <DropdownMenuLabel>
+                    {session?.user?.name}'s Account
+                  </DropdownMenuLabel>
                 </Link>
                 <DropdownMenuSeparator />
                 <Link href="/dashboard/settings">
@@ -219,7 +228,9 @@ export default async function DashboardLayout({ children }) {
                 </Link>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link href="/"><Logout/></Link>
+                  <Link href="/">
+                    <Logout />
+                  </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

@@ -5,10 +5,12 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Navbar from "@/components/custom-navbar";
+import TopBar from "@/components/top-bar";
 
 const Hero = () => {
   return (
     <div>
+      <TopBar />
       <Navbar />
       <div className="container">
         <Section>
@@ -36,7 +38,7 @@ const Hero = () => {
               <div className="my-8 h-96 not-prose w-full overflow-hidden border rounded-lg md:rounded-xl md:h-[480px]">
                 <Image
                   className="object-cover object-bottom w-full h-full"
-                  src='/About-Image.jpg'
+                  src="/About-Image.jpg"
                   width={1920}
                   height={1080}
                   alt="hero image"

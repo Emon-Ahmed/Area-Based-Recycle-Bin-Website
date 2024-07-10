@@ -8,10 +8,12 @@ import {
 } from "@/components/ui/card";
 import Navbar from "@/components/custom-navbar";
 import RegisterForm from "@/components/register-form";
+import TopBar from "@/components/top-bar";
 
 export default async function LoginForm() {
   return (
     <div>
+      <TopBar />
       <Navbar />
       <Card className="max-w-sm mx-auto my-32">
         <CardHeader>
