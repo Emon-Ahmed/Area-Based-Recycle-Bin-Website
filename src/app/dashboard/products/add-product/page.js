@@ -22,8 +22,8 @@ import {
 } from "@/components/ui/select";
 import { CldUploadWidget } from "next-cloudinary";
 import Loading from "@/app/loading";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+// import ReactQuill from "react-quill";
+// import "react-quill/dist/quill.snow.css";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function AddProduct() {
@@ -147,12 +147,12 @@ export default function AddProduct() {
 
                       <div className="grid gap-3 mb-12">
                         <Label htmlFor="description">Full Description</Label>
-                        <ReactQuill
+                        {/* <ReactQuill
                           className="min-h-32"
                           theme="snow"
                           value={value}
                           onChange={setValue}
-                        />
+                        /> */}
                       </div>
                     </div>
                   </CardContent>

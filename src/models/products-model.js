@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const productsSchema = new Schema({
   productName: {
-    required: true,
+    required: false,
     type: String,
   },
   productShortDescription: {
@@ -26,16 +26,16 @@ const productsSchema = new Schema({
     type: String,
   },
   productImage: {
-    required: true,
+    required: false,
     type: String,
   },
   createdOn: {
-    required: true,
+    required: false,
     default: Date.now(),
     type: Date,
   },
   modifiedOn: {
-    required: true,
+    required: false,
     default: Date.now(),
     type: Date,
   },

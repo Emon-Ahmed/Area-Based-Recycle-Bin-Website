@@ -5,9 +5,18 @@ import { auth } from "@/lib/auth";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import Link from "next/link";
+import { getOrderByProduct } from "@/queries/getOrder";
 
 const SingleProduct = async ({ product }) => {
+  const bids = await getOrderByProduct(product?.id);
   const session = await auth();
+  const bidUser = { users: bids.map((bid) => bid?.user) };
+  const bidEmail = session?.user?.email;
+  function isEmailInBideUser(email, bidUser) {
+    return bidUser.users.includes(email);
+  }
+  const bidEmailMatch = isEmailInBideUser(bidEmail, bidUser);
+  
   return (
     <div>
       <div className="bg-white dark:bg-gray-950">
@@ -35,7 +44,14 @@ const SingleProduct = async ({ product }) => {
             {session ? (
               <div className="grid gap-4">
                 <div className="flex items-center gap-4"></div>
-                <Bidding product={product} session={session} />
+                {bidEmailMatch ? (
+                  <span className="text-gray-500 dark:text-gray-400">
+                    Already Bid
+                  </span>
+                ) : (
+                  <Bidding product={product} session={session} />
+                )}
+
                 <Bid product={product} session={session} />
               </div>
             ) : (

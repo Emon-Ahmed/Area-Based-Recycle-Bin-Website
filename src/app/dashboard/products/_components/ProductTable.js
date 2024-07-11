@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import Loading from "@/app/loading";
 import DeleteButton from "./delete-product";
 import { formatMyDate } from "@/lib/date";
+import Link from "next/link";
 
 const ProductTable = () => {
   const [products, setProducts] = useState(null);
@@ -58,7 +59,7 @@ const ProductTable = () => {
         <TableBody>
           {products?.map((product, i) => {
             return (
-              <TableRow>
+              <TableRow key={i}>
                 <TableCell className="hidden sm:table-cell">
                   <Image
                     alt="Product image"
@@ -90,7 +91,9 @@ const ProductTable = () => {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                      <DropdownMenuItem>Edit</DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <Link href={`/dashboard/products/edit/${product?._id}`}>Edit</Link>
+                        </DropdownMenuItem>
                       <DropdownMenuItem>
                         <DeleteButton product={product} />
                       </DropdownMenuItem>
