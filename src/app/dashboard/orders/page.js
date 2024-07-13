@@ -6,7 +6,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
 import {
   Table,
   TableBody,
@@ -23,6 +22,7 @@ import { formatMyDate } from "@/lib/date";
 export default async function OrderPage() {
   const ordersList = await getOrderList();
   const ordersUser = ordersList?.map((b) => b.users.map((u) => u));
+  console.log(ordersList);
 
   return (
     <div className="flex flex-col w-full min-h-screen">
@@ -73,7 +73,7 @@ export default async function OrderPage() {
                           {/* <TableCell className="text-right">
                             {o?.price}
                           </TableCell> */}
-                          <SelectBid o={o} />
+                          <SelectBid o={o} ordersList={ordersList} />
                         </TableRow>
                       );
                     })}

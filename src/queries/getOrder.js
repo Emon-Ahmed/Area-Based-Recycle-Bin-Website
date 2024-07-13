@@ -14,6 +14,19 @@ export async function getOrderList() {
   }
 }
 
+export async function getOrderByProductAndUserMyOrder(userEmail) {
+  await dbConnect();
+  try {
+    const orders = await ordersModel
+      .find({ user: userEmail, active: true })
+      .populate("product")
+      .lean();
+    return orders;
+  } catch (error) {
+    console.log("Error fetching order list:", error);
+  }
+}
+
 export async function getOrderByProductAndUser(userEmail, product_ID) {
   await dbConnect();
   try {
