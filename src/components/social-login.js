@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 const SocialLogins = () => {
   const handleAuth = (event) => {
-    signIn("google", { callbackUrl: "http://localhost:3000/dashboard" });
+    signIn("google", { callbackUrl: "/dashboard" });
   };
   return (
     <div>

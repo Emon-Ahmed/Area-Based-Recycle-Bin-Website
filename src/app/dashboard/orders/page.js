@@ -18,11 +18,11 @@ import { getOrderList } from "@/queries/getOrder";
 import Link from "next/link";
 import SelectBid from "./_component/select-bid";
 import { formatMyDate } from "@/lib/date";
+import { dbConnect } from "@/lib/mongo";
 
 export default async function OrderPage() {
+  await dbConnect();
   const ordersList = await getOrderList();
-  const ordersUser = ordersList?.map((b) => b.users.map((u) => u));
-  console.log(ordersList);
 
   return (
     <div className="flex flex-col w-full min-h-screen">
@@ -46,9 +46,9 @@ export default async function OrderPage() {
                       <TableHead className="hidden sm:table-cell">
                         Status
                       </TableHead>
-                      <TableHead className="hidden md:table-cell">
+                      {/* <TableHead className="hidden md:table-cell">
                         Date
-                      </TableHead>
+                      </TableHead> */}
                       {/* <TableHead className="text-right">Amount</TableHead> */}
                       <TableHead>Bids</TableHead>
                     </TableRow>
@@ -67,9 +67,9 @@ export default async function OrderPage() {
                               Fulfilled
                             </Badge>
                           </TableCell>
-                          <TableCell className="hidden md:table-cell">
-                            {/* {formatMyDate(o?.createdOn)} */}
-                          </TableCell>
+                          {/* <TableCell className="hidden md:table-cell">
+                            {formatMyDate(o?.createdOn)}
+                          </TableCell> */}
                           {/* <TableCell className="text-right">
                             {o?.price}
                           </TableCell> */}

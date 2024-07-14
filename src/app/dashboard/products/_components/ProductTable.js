@@ -45,15 +45,13 @@ const ProductTable = () => {
         <TableHeader>
           <TableRow>
             <TableHead className="hidden w-[100px] sm:table-cell">
-              <span className="sr-only">Image</span>
+              Image
             </TableHead>
             <TableHead>Name</TableHead>
             <TableHead>Status</TableHead>
-            <TableHead className="hidden md:table-cell">Price</TableHead>
-            <TableHead className="hidden md:table-cell">Created at</TableHead>
-            <TableHead>
-              <span className="sr-only">Actions</span>
-            </TableHead>
+            <TableHead>Price</TableHead>
+            <TableHead>Created at</TableHead>
+            <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -92,8 +90,10 @@ const ProductTable = () => {
                     <DropdownMenuContent align="end">
                       <DropdownMenuLabel>Actions</DropdownMenuLabel>
                       <DropdownMenuItem>
-                        <Link href={`/dashboard/products/edit/${product?._id}`}>Edit</Link>
-                        </DropdownMenuItem>
+                        <Link href={`/dashboard/products/edit/${product?._id}`}>
+                          Edit
+                        </Link>
+                      </DropdownMenuItem>
                       <DropdownMenuItem>
                         <DeleteButton product={product} />
                       </DropdownMenuItem>

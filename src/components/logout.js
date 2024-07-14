@@ -6,7 +6,7 @@ const Logout = () => {
   return (
     <button
       onClick={() => {
-        signOut({ callbackUrl: "http://localhost:3000/login" });
+        signOut({ callbackUrl: "/login" });
       }}
     >
       Log Out

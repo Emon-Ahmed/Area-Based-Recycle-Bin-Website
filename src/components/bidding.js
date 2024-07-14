@@ -16,7 +16,7 @@ const Bidding = ({ product, session }) => {
       const user = session?.user?.email;
       const userName = session?.user?.name;
       const product_id = product?.id;
-      const res = await fetch("http://localhost:3000/api/order", {
+      const res = await fetch("/api/order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

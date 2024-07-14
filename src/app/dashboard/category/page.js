@@ -50,7 +50,7 @@ export default function Page() {
     try {
       const formData = new FormData(event.currentTarget);
       const name = formData.get("name");
-      const res = await fetch("http://localhost:3000/api/category", {
+      const res = await fetch("api/category", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

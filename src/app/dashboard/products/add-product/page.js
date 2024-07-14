@@ -1,8 +1,32 @@
 "use client";
+import React from "react";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { CldUploadWidget } from "next-cloudinary";
+
+import {
+  BtnBold,
+  BtnBulletList,
+  BtnClearFormatting,
+  BtnItalic,
+  BtnLink,
+  BtnNumberedList,
+  BtnRedo,
+  BtnStrikeThrough,
+  BtnStyles,
+  BtnUnderline,
+  BtnUndo,
+  HtmlButton,
+  Separator,
+  Toolbar,
+  Editor,
+  EditorProvider,
+} from "react-simple-wysiwyg";
+
+import Loading from "@/app/loading";
 import { ChevronLeft } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -20,10 +44,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CldUploadWidget } from "next-cloudinary";
-import Loading from "@/app/loading";
-// import ReactQuill from "react-quill";
-// import "react-quill/dist/quill.snow.css";
 import { Textarea } from "@/components/ui/textarea";
 
 export default function AddProduct() {
@@ -39,6 +59,9 @@ export default function AddProduct() {
   const productImage = resource?.secure_url || "/placeholder.svg";
   const [productCategory, setProductCategory] = useState(null);
 
+  function onChange(e) {
+    setValue(e.target.value);
+  }
   async function onSubmit(event) {
     event.preventDefault();
     try {
@@ -47,7 +70,7 @@ export default function AddProduct() {
       const productShortDescription = formData.get("productShortDescription");
       const productDescription = value;
       const productPrice = formData.get("productPrice");
-      const res = await fetch("http://localhost:3000/api/products", {
+      const res = await fetch("/api/products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -147,12 +170,29 @@ export default function AddProduct() {
 
                       <div className="grid gap-3 mb-12">
                         <Label htmlFor="description">Full Description</Label>
-                        {/* <ReactQuill
-                          className="min-h-32"
-                          theme="snow"
-                          value={value}
-                          onChange={setValue}
-                        /> */}
+
+                        <EditorProvider className="min-h-32">
+                          <Editor value={value} onChange={onChange}>
+                            <Toolbar>
+                              <BtnUndo />
+                              <BtnRedo />
+                              <Separator />
+                              <BtnBold />
+                              <BtnItalic />
+                              <BtnUnderline />
+                              <BtnStrikeThrough />
+                              <Separator />
+                              <BtnNumberedList />
+                              <BtnBulletList />
+                              <Separator />
+                              <BtnLink />
+                              <BtnClearFormatting />
+                              <HtmlButton />
+                              <Separator />
+                              <BtnStyles />
+                            </Toolbar>
+                          </Editor>
+                        </EditorProvider>
                       </div>
                     </div>
                   </CardContent>

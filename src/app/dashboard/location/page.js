@@ -40,7 +40,7 @@ export default function Location() {
     try {
       const formData = new FormData(event.currentTarget);
       const name = formData.get("name");
-      const res = await fetch("http://localhost:3000/api/location", {
+      const res = await fetch("/api/location", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
