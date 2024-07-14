@@ -17,14 +17,10 @@ export async function GET(request, { params }) {
 export async function PUT(req, value) {
   try {
     const id = value?.params?.id;
-    console.log(id);
     const data = { _id: id };
     const payload = await req.json();
-
     await dbConnect();
-
     const order = await ordersModel.findOneAndUpdate(data, payload);
-    console.log({ success: true });
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Error Order:", error);
