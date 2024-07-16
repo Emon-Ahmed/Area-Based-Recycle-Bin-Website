@@ -10,7 +10,7 @@ import TopBar from "@/components/top-bar";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <TopBar/>
       <Navbar />
       <Banner />
@@ -19,7 +19,7 @@ export default function Home() {
       <FeatureLeft />
       <FeatureRight />
       <FAQ />
-      <CTA />
-    </div>
+      {/* <CTA /> */}
+    </>
   );
 }

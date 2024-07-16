@@ -8,7 +8,7 @@ export default function ShopProducts() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/products-show")
+    fetch("/api/products-show", { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

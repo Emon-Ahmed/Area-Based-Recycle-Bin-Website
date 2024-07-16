@@ -7,3 +7,12 @@ export async function getProducts(id) {
   const product = await productsModel.findById(id).lean();
   return replaceMongoIdInObject(product);
 }
+
+export async function getProductSearch(str) {
+  await dbConnect();
+  let searchQuery = `${str}`;
+  const products = await productsModel.find({
+    $or: [{ productName: { $regex: searchQuery, $options: "i" } }],
+  });
+  return products;
+}
