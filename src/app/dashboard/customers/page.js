@@ -1,4 +1,3 @@
-import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -15,13 +14,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { formatMyDate } from "@/lib/date";
-import { dbConnect } from "@/lib/mongo";
 import { getUser } from "@/queries/getUser";
+import UpdateAdmin from "./_components/updateAdmin";
 
 export default async function Customers() {
-  await dbConnect();
-  const user = await getUser();
-  // console.log(user);
+  const getUserData = await getUser();
   return (
     <div className="flex flex-col w-full min-h-screen">
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-4">
@@ -36,21 +33,15 @@ export default async function Customers() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Name </TableHead>
-                      <TableHead className="hidden sm:table-cell">
-                        Email
-                      </TableHead>
-                      <TableHead className="hidden sm:table-cell">
-                        Type
-                      </TableHead>
-
-                      <TableHead className="hidden md:table-cell">
-                        Date
-                      </TableHead>
+                      <TableHead>Name</TableHead>
+                      <TableHead>Email</TableHead>
+                      <TableHead>Type</TableHead>
+                      {/* <TableHead>Date</TableHead> */}
+                      <TableHead>Make Admin</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {user.map((user, i) => {
+                    {getUserData.map((user, i) => {
                       return (
                         <TableRow className="bg-accent">
                           <TableCell>
@@ -61,11 +52,21 @@ export default async function Customers() {
                               {user?.email}
                             </div>
                           </TableCell>
-                          <TableCell className="hidden sm:table-cell">
-                            {user?.role || "Customer"}
+                          <TableCell>
+                            {user?.isAdmin
+                              ? "Admin"
+                              : user?.isSeller
+                              ? "Seller"
+                              : "Customer"}
                           </TableCell>
-                          <TableCell className="hidden md:table-cell">
-                            {/* {formatMyDate(user?.createdOn)} */}
+                          {/* <TableCell>
+                            {formatMyDate(user?.createdOn)}
+                          </TableCell> */}
+                          <TableCell>
+                            <UpdateAdmin
+                              user={user}
+                              getUserData={getUserData}
+                            />
                           </TableCell>
                         </TableRow>
                       );

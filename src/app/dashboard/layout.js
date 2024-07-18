@@ -8,9 +8,7 @@ import {
   Menu,
   Package,
   Package2,
-  Search,
   ShoppingCart,
-  Users,
   UsersRound,
   Settings,
   Plus,
@@ -26,15 +24,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { redirect } from "next/navigation";
+import { getUserByEmail } from "@/queries/getUser";
 
 export default async function DashboardLayout({ children }) {
   const session = await auth();
   if (!session) {
     redirect("/login");
   }
+  const email = session?.user?.email;
+  const getUser = await getUserByEmail(email);
   return (
     <div>
       <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
@@ -66,48 +66,61 @@ export default async function DashboardLayout({ children }) {
                   <ShoppingCart className="w-4 h-4" />
                   My Orders
                 </Link>
-                <Link
-                  href="/dashboard/orders"
-                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
-                >
-                  <ShoppingCart className="w-4 h-4" />
-                  Manage Orders
-                </Link>
-                <Link
-                  href="/dashboard/products/add-product"
-                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
-                >
-                  <Plus className="w-4 h-4" />
-                  Add Products
-                </Link>
-                <Link
-                  href="/dashboard/products"
-                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
-                >
-                  <Package className="w-4 h-4" />
-                  Manage Products
-                </Link>
-                <Link
-                  href="/dashboard/category"
-                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
-                >
-                  <PackageSearch className="w-4 h-4" />
-                  Manage Category
-                </Link>
-                <Link
-                  href="/dashboard/customers"
-                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
-                >
-                  <UsersRound className="w-4 h-4" />
-                  All Customers
-                </Link>
-                <Link
-                  href="/dashboard/location"
-                  className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
-                >
-                  <LocateFixed className="w-4 h-4" />
-                  Location List
-                </Link>
+                {getUser?.isSeller ? (
+                  <>
+                    <Link
+                      href="/dashboard/orders"
+                      className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
+                    >
+                      <ShoppingCart className="w-4 h-4" />
+                      Manage Orders
+                    </Link>
+                    <Link
+                      href="/dashboard/products/add-product"
+                      className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
+                    >
+                      <Plus className="w-4 h-4" />
+                      Add Products
+                    </Link>
+                    <Link
+                      href="/dashboard/products"
+                      className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
+                    >
+                      <Package className="w-4 h-4" />
+                      Manage Products
+                    </Link>
+                  </>
+                ) : (
+                  <></>
+                )}
+                {getUser?.isAdmin ? (
+                  <>
+                    <Link
+                      href="/dashboard/category"
+                      className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg text-primary hover:text-primary"
+                    >
+                      <PackageSearch className="w-4 h-4" />
+                      Manage Category
+                    </Link>
+                    <Link
+                      href="/dashboard/customers"
+                      className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
+                    >
+                      <UsersRound className="w-4 h-4" />
+                      All Customers
+                    </Link>
+                    <Link
+                      href="/dashboard/location"
+                      className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
+                    >
+                      <LocateFixed className="w-4 h-4" />
+                      Location List
+                    </Link>
+                  </>
+                ) : (
+                  <></>
+                )}
+
                 <Link
                   href="/dashboard/settings"
                   className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
@@ -193,18 +206,7 @@ export default async function DashboardLayout({ children }) {
                 </nav>
               </SheetContent>
             </Sheet>
-            <div className="flex-1 w-full">
-              {/* <form>
-                <div className="relative">
-                  <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                  <Input
-                    type="search"
-                    placeholder="Search products..."
-                    className="w-full pl-8 shadow-none appearance-none bg-background md:w-2/3 lg:w-1/3"
-                  />
-                </div>
-              </form> */}
-            </div>
+            <div className="flex-1 w-full"></div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button

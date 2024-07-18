@@ -4,20 +4,20 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const UpdateUser = ({ getUser }) => {
-  const [checked, setChecked] = useState(false);
+  const router = useRouter();
   const [isLoading, setLoading] = useState(true);
   const [user, setUser] = useState({});
+
   useEffect(() => {
     fetch(`/api/users/${getUser?.id}`)
       .then((res) => res.json())
@@ -26,21 +26,24 @@ const UpdateUser = ({ getUser }) => {
         setLoading(false);
       });
   }, []);
-  console.log(user);
+
+  const [checked, setChecked] = useState(getUser?.isSeller);
+
   async function onSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const name = formData.get("userName");
-
+    const name = formData.get("name");
     let data = await fetch(`/api/users/${getUser?.id}`, {
       method: "PUT",
       body: JSON.stringify({
         name,
+        isSeller: checked,
       }),
     });
     data = await data.json();
     if (data.success) {
       alert("Updated");
+      router.refresh();
     } else {
       alert("Try Again");
     }
@@ -59,7 +62,7 @@ const UpdateUser = ({ getUser }) => {
                 <Label htmlFor="name">Name</Label>
                 <Input
                   id="name"
-                  name="userName"
+                  name="name"
                   type="text"
                   className="w-full"
                   placeholder="Name"

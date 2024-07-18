@@ -17,6 +17,16 @@ const userSchema = new Schema({
     required: false,
     type: String,
   },
+  isAdmin: {
+    required: false,
+    default: false,
+    type: Boolean,
+  },
+  isSeller: {
+    required: false,
+    default: false,
+    type: Boolean,
+  },
   createdOn: {
     required: true,
     default: Date.now(),
