@@ -34,7 +34,7 @@ const Product = ({ product }) => {
           </p>
           <div className="flex items-center justify-between">
             <h4 className="text-base font-semibold md:text-lg">
-              ${product?.productPrice}
+            ৳{product?.productPrice}
             </h4>
             <Link href={"/products/" + product?._id}>
               <Button size="sm">Buy Now</Button>
