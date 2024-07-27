@@ -2,23 +2,24 @@ import { dbConnect } from "@/lib/mongo";
 import { productsModel } from "@/models/products-model";
 import { NextResponse } from "next/server";
 
-export async function GET(req, res) {
-    await dbConnect();
-    const { query } = req;
-    const searchQuery = query.q;
-    if (!searchQuery) {
-      return res.status(400).json({ message: 'Search query is required' });
-    }
-    try {
-      const items = await productsModel.find({
-        $or: [
-          { name: { $regex: searchQuery, $options: 'i' } },
-        ],
-      });
-      res.status(200).json(items);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
+export async function GET(request) {
+  await dbConnect();
+  const searchName = request.nextUrl.searchParams.get("name");
+  const searchLocation = request.nextUrl.searchParams.get("location");
+  if (!searchName) {
+    return NextResponse.json({ message: "Search query is required" });
+  }
+  try {
+    const items = await productsModel.find({
+      $and: [
+        { productName: { $regex: searchName, $options: "i" } },
+        { productLocation: { $regex: searchLocation, $options: "i" } },
+      ],
+    });
+    return NextResponse.json(items);
+  } catch (error) {
+    NextResponse.json({ message: error.message });
+  }
 }
 
 export const POST = async (request) => {
