@@ -8,8 +8,8 @@ const ProductsPage = async () => {
     <div>
       <TopBar />
       <Navbar />
-      {/* <ShopBanner /> */}
-      <ShopProducts />
+      <ShopBanner />
+      {/* <ShopProducts /> */}
     </div>
   );
 };

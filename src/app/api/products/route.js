@@ -6,14 +6,17 @@ export async function GET(request) {
   await dbConnect();
   const searchName = request.nextUrl.searchParams.get("name");
   const searchLocation = request.nextUrl.searchParams.get("location");
-  if (!searchName) {
-    return NextResponse.json({ message: "Search query is required" });
-  }
+  const searchCategory = request.nextUrl.searchParams.get("category");
+
+  // if (!searchName) {
+  //   return NextResponse.json({ message: "Search query is required" });
+  // }
   try {
     const items = await productsModel.find({
       $and: [
         { productName: { $regex: searchName, $options: "i" } },
         { productLocation: { $regex: searchLocation, $options: "i" } },
+        { productCategory: { $regex: searchCategory, $options: "i" } },
       ],
     });
     return NextResponse.json(items);
