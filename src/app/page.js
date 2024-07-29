@@ -18,7 +18,7 @@ export default function Home() {
       <FeaturedProducts />
       <FeatureLeft />
       <FeatureRight />
-      <FAQ />
+      {/* <FAQ /> */}
       {/* <CTA /> */}
     </>
   );
