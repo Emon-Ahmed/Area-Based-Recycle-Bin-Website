@@ -14,6 +14,18 @@ const ordersSchema = new Schema({
     type: String,
   },
   product: { type: Schema.ObjectId, ref: "products" },
+  phone: {
+    required: true,
+    type: String,
+  },
+  address: {
+    required: true,
+    type: String,
+  },
+  payment: {
+    required: true,
+    type: String,
+  },
   active: {
     required: true,
     default: false,

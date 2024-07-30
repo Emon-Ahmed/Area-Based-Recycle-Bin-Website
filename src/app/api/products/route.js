@@ -4,20 +4,10 @@ import { NextResponse } from "next/server";
 
 export async function GET(request) {
   await dbConnect();
-  // const params = request.query;
-  // console.log(params);
-  const url = new URL(request.url)
-  console.log(url.searchParams);
-
+  const url = new URL(request.url);
   const searchName = url.searchParams.get("name");
   const searchLocation = url.searchParams.get("location");
   const searchCategory = url.searchParams.get("category");
-
-  console.log(searchName, searchLocation, searchCategory);
-  // const searchName = request.nextUrl.searchParams.get("name");
-  // const searchLocation = request.nextUrl.searchParams.get("location");
-  // const searchCategory = request.nextUrl.searchParams.get("category");
-
   try {
     const items = await productsModel.find({
       $and: [

@@ -19,18 +19,18 @@ const Bidding = ({ product, session }) => {
   const router = useRouter();
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
-
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const userName = session?.user?.name;
   const user = session?.user?.email;
 
   async function onSubmit(event) {
     event.preventDefault();
     try {
-      const formData = new FormData(event.currentTarget);
-      // const price = formData.get("price");
       const user = session?.user?.email;
       const userName = session?.user?.name;
       const product_id = product?.id;
+
       const res = await fetch("/api/order", {
         method: "POST",
         headers: {
@@ -41,6 +41,9 @@ const Bidding = ({ product, session }) => {
           user,
           userName,
           product: product_id,
+          phone,
+          address,
+          payment: "Cash On Delivery",
         }),
       });
       if (res.status === 201) {
@@ -53,7 +56,6 @@ const Bidding = ({ product, session }) => {
       setError(error.message);
     }
   }
-
   return (
     <Dialog>
       <div className="flex items-center gap-4">
@@ -95,7 +97,7 @@ const Bidding = ({ product, session }) => {
               </div>
               <div className="grid items-center grid-cols-4 gap-4">
                 <Label htmlFor="name" className="text-left">
-                  City
+                  Email
                 </Label>
                 <Input
                   readOnly
@@ -108,15 +110,34 @@ const Bidding = ({ product, session }) => {
                 <Label htmlFor="bid" className="text-left">
                   Bid Amount
                 </Label>
-                <Input id="bid" className="col-span-3" defaultValue={input} />
+                <Input
+                  placeholder={product?.productPrice}
+                  id="bid"
+                  className="col-span-3"
+                  defaultValue={input}
+                />
+              </div>
+              <div className="grid items-center grid-cols-4 gap-4">
+                <Label htmlFor="bid" className="text-left">
+                  Phone
+                </Label>
+                <Input
+                  onInput={(e) => setPhone(e.target.value)}
+                  placeholder="+880 1921 412932"
+                  name="phone"
+                  id="phone"
+                  className="col-span-3"
+                />
               </div>
               <div className="grid items-center grid-cols-4 gap-4">
                 <Label htmlFor="address" className="text-left">
                   Address
                 </Label>
                 <Input
+                  onInput={(e) => setAddress(e.target.value)}
                   placeholder="Holding - 170/1, Word #9, Dhamrai, Dhaka"
                   id="address"
+                  name="address"
                   className="col-span-3"
                 />
               </div>

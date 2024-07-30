@@ -17,12 +17,9 @@ export async function GET(request, { params }) {
 
 export async function PUT(req, value) {
   const id = value?.params?.id;
-
   const data = { _id: id };
   const payload = await req.json();
-  console.log(payload);
   await dbConnect();
-
   const user = await userModel.findOneAndUpdate(data, payload);
   return NextResponse.json({ user, success: true });
 }

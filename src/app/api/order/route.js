@@ -3,13 +3,17 @@ import { ordersModel } from "@/models/order-model";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
-  const { price, user, userName, product } = await request.json();
+  const { price, user, userName, product, phone, address, payment } =
+    await request.json();
   await dbConnect();
   const order = {
     price,
     user,
     userName,
     product,
+    phone,
+    address,
+    payment,
   };
   try {
     await ordersModel.create(order);

@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import ShopProducts from "./shop-products";
 import Product from "./product";
+import { Button } from "./ui/button";
 
 export default async function ShopBanner() {
   const [results, setResults] = useState(null);
@@ -32,8 +33,6 @@ export default async function ShopBanner() {
       setError(error.message);
     }
   }
-
-  console.log(searchProductCategory, searchProductLocation, results);
 
   return (
     <>
@@ -71,15 +70,15 @@ export default async function ShopBanner() {
                 <SelectItem value="Mirpur">Mirpur</SelectItem>
               </SelectContent>
             </Select>
-            <form className="flex items-center" onSubmit={onSubmit}>
-              <input
+            <form className="flex items-center space-x-4" onSubmit={onSubmit}>
+              <Input
                 id="productName"
                 name="productName"
                 className="w-full"
                 placeholder="Search for anything..."
                 type="text"
               />
-              <button type="submit">Search</button>
+              <Button type="submit">Search</Button>
             </form>
           </div>
         </div>

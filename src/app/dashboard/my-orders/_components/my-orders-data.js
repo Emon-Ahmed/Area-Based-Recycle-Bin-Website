@@ -3,7 +3,6 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 
 const MyOrdersData = ({ myOrder }) => {
-  console.log(myOrder);
   return (
     <>
       {myOrder.map((o, i) => {
