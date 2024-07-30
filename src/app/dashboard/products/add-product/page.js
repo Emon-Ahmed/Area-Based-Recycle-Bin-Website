@@ -174,22 +174,22 @@ export default function AddProduct() {
                         <EditorProvider className="min-h-32">
                           <Editor value={value} onChange={onChange}>
                             <Toolbar>
-                              <BtnUndo />
-                              <BtnRedo />
+                              {/* <BtnUndo />
+                              <BtnRedo /> */}
                               <Separator />
                               <BtnBold />
                               <BtnItalic />
                               <BtnUnderline />
                               <BtnStrikeThrough />
                               <Separator />
-                              <BtnNumberedList />
-                              <BtnBulletList />
+                              {/* <BtnNumberedList /> */}
+                              {/* <BtnBulletList /> */}
                               <Separator />
                               <BtnLink />
                               <BtnClearFormatting />
                               <HtmlButton />
                               <Separator />
-                              <BtnStyles />
+                              {/* <BtnStyles /> */}
                             </Toolbar>
                           </Editor>
                         </EditorProvider>

@@ -9,15 +9,35 @@ import {
   SelectGroup,
   SelectLabel,
 } from "@/components/ui/select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ShopProducts from "./shop-products";
 import Product from "./product";
 import { Button } from "./ui/button";
 
 export default async function ShopBanner() {
   const [results, setResults] = useState(null);
+
   const [searchProductCategory, setSearchProductCategory] = useState("");
   const [searchProductLocation, setSearchProductLocation] = useState("");
+
+  const [category, setCategory] = useState(null);
+  const [location, setLocation] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/category", { cache: "no-cache" })
+      .then((res) => res.json())
+      .then((data) => {
+        setCategory(data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/location", { cache: "no-cache" })
+      .then((res) => res.json())
+      .then((data) => {
+        setLocation(data);
+      });
+  }, []);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -53,11 +73,13 @@ export default async function ShopBanner() {
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
-                <SelectGroup>
-                  <SelectLabel>Category</SelectLabel>
-                  <SelectItem value="phone">Phone</SelectItem>
-                  <SelectItem value="laptop">Laptop</SelectItem>
-                </SelectGroup>
+                {category?.map((category, i) => {
+                  return (
+                    <SelectItem value={category?.name}>
+                      {category?.name}
+                    </SelectItem>
+                  );
+                })}
               </SelectContent>
             </Select>
             <Select onValueChange={setSearchProductLocation}>
@@ -65,9 +87,13 @@ export default async function ShopBanner() {
                 <SelectValue placeholder="Location" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="Dhaka">Dhaka</SelectItem>
-                <SelectItem value="Dhamrai">Dhamrai</SelectItem>
-                <SelectItem value="Mirpur">Mirpur</SelectItem>
+                {location?.map((location, i) => {
+                  return (
+                    <SelectItem value={location?.name}>
+                      {location?.name}
+                    </SelectItem>
+                  );
+                })}
               </SelectContent>
             </Select>
             <form className="flex items-center space-x-4" onSubmit={onSubmit}>
