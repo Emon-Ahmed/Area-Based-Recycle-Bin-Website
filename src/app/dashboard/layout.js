@@ -103,18 +103,26 @@ export default async function DashboardLayout({ children }) {
                       Manage Category
                     </Link>
                     <Link
-                      href="/dashboard/customers"
-                      className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
-                    >
-                      <UsersRound className="w-4 h-4" />
-                      All Customers
-                    </Link>
-                    <Link
                       href="/dashboard/location"
                       className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
                     >
                       <LocateFixed className="w-4 h-4" />
-                      Location List
+                      Manage Location
+                    </Link>
+                    <Link
+                      href="/dashboard/customers"
+                      className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
+                    >
+                      <UsersRound className="w-4 h-4" />
+                      Manage Users
+                    </Link>
+
+                    <Link
+                      href="/dashboard/contact"
+                      className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
+                    >
+                      <LocateFixed className="w-4 h-4" />
+                      Supports
                     </Link>
                   </>
                 ) : (
