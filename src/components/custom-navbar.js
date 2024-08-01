@@ -6,9 +6,18 @@ import {
   SheetContent,
   Sheet,
 } from "@/components/ui/sheet";
+import { CircleUser} from "lucide-react";
 import { RiLuggageCartLine } from "react-icons/ri";
 import { auth } from "@/lib/auth";
-
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Logout from "./logout";
 export default async function Navbar() {
   const session = await auth();
   return (
@@ -41,12 +50,35 @@ export default async function Navbar() {
             Contact
           </Link>
           {session?.user ? (
-            <Link
-              className="hover:underline hover:underline-offset-4"
-              href="/dashboard"
-            >
-              <Button>Dashboard</Button>
-            </Link>
+            <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="secondary"
+                size="icon"
+                className="rounded-full"
+              >
+                <CircleUser className="w-6 h-6" />
+                <span className="sr-only">Toggle user menu</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <Link href="/dashboard">
+                <DropdownMenuLabel>
+                  {session?.user?.name}
+                </DropdownMenuLabel>
+              </Link>
+              <DropdownMenuSeparator />
+              <Link href="/dashboard/settings">
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+              </Link>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <Link href="/">
+                  <Logout />
+                </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           ) : (
             <>
               <Link

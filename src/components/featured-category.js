@@ -10,7 +10,7 @@ export default function FeaturedCategory() {
         <div className="flex flex-col items-center">
           <img
             alt="Home Decor"
-            className="object-cover w-48 h-48 mb-4"
+            className="object-cover w-64 h-64 mb-4"
             height="200"
             src="/boys-dress.jpg"
             style={{
@@ -38,7 +38,7 @@ export default function FeaturedCategory() {
         <div className="flex flex-col items-center">
           <img
             alt="Lighting"
-            className="object-cover w-48 h-48 mb-4"
+            className="object-cover w-64 h-64 mb-4"
             height="200"
             src="/boys-pants.jpg"
             style={{

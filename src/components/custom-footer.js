@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="container">
       <Section>
-        <Container className="grid md:grid-cols-[1.5fr_0.5fr_0.5fr] gap-12 border-t">
+        <div className="grid md:grid-cols-[1.5fr_0.5fr_0.5fr] gap-12 border-t p-6">
           <div className="flex flex-col gap-6 not-prose">
             <Link href="/" className="flex items-center gap-2">
               <h3 className="sr-only">Recycle Bin Website</h3>
@@ -36,8 +36,8 @@ export default function Footer() {
             <Link href="/terms-of-service">Terms of Service</Link>
             <Link href="/cookie-policy">Cookie Policy</Link>
           </div>
-        </Container>
-        <Container className="flex flex-col justify-between gap-6 border-t not-prose md:flex-row md:gap-2 md:items-center">
+        </div>
+        <div className="flex flex-col justify-between gap-6 p-6 border-t not-prose md:flex-row md:gap-2 md:items-center">
           <div className="flex gap-2">
             <Button variant="outline" size="icon">
               <Github />
@@ -52,7 +52,7 @@ export default function Footer() {
           <p className="text-muted-foreground">
             © Area Based eCommerce Website . All rights reserved. 2024-present.
           </p>
-        </Container>
+        </div>
       </Section>
     </footer>
   );

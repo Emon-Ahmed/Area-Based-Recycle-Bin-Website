@@ -22,7 +22,7 @@ const FeatureRight = () => {
             </p>
             <div className="flex items-center gap-2 not-prose">
               <Button className="w-fit" asChild>
-                <Link href="#">Contact With Us</Link>
+                <Link href="/contact">Contact With Us</Link>
               </Button>
               {/* <Button className="w-fit" variant="link" asChild>
                 <Link href="#">Learn More {"->"}</Link>
