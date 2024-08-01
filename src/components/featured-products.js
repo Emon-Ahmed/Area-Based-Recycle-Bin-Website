@@ -4,7 +4,7 @@ import { Badge } from "./ui/badge";
 export default function FeaturedProducts() {
   return (
     <div className="container">
-      <div className="py-12 md:py-24 lg:py-32">
+      <div className="pt-12 md:pt-24 lg:pt-32">
         <div className="grid gap-6 px-4 mx-auto md:gap-8 ">
           <div className="flex flex-col items-center gap-4 text-center md:items-center md:gap-8">
             <div className="grid gap-1">

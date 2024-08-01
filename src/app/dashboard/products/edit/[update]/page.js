@@ -17,13 +17,63 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
+import {
+  BtnBold,
+  BtnBulletList,
+  BtnClearFormatting,
+  BtnItalic,
+  BtnLink,
+  BtnNumberedList,
+  BtnRedo,
+  BtnStrikeThrough,
+  BtnStyles,
+  BtnUnderline,
+  BtnUndo,
+  HtmlButton,
+  Separator,
+  Toolbar,
+  Editor,
+  EditorProvider,
+} from "react-simple-wysiwyg";
 import { Textarea } from "@/components/ui/textarea";
 import { useEffect, useState } from "react";
 import Loading from "@/app/loading";
+import { CldUploadWidget } from "next-cloudinary";
+import Image from "next/image";
 
 export default async function Page({ params: { update } }) {
   const [isLoading, setLoading] = useState(true);
   const [product, setProduct] = useState({});
+  const [category, setCategory] = useState(null);
+  const [location, setLocation] = useState(null);
+  const [productLocation, setProductLocation] = useState(null);
+  const [productCategory, setProductCategory] = useState(null);
+  const [resource, setResource] = useState();
+  const [value, setValue] = useState("");
+
+  function onChange(e) {
+    setValue(e.target.value);
+  }
+
+  const productImage = resource?.secure_url || product.product?.productImage;
+  useEffect(() => {
+    fetch("/api/category", { cache: "no-cache" })
+      .then((res) => res.json())
+      .then((data) => {
+        setCategory(data);
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/location", { cache: "no-cache" })
+      .then((res) => res.json())
+      .then((data) => {
+        setLocation(data);
+        setLoading(false);
+      });
+  }, []);
 
   useEffect(() => {
     fetch(`/api/products-show/${update}`)
@@ -39,14 +89,19 @@ export default async function Page({ params: { update } }) {
     const formData = new FormData(event.currentTarget);
     const productName = formData.get("productName");
     const productShortDescription = formData.get("productShortDescription");
+    const productDescription = value;
     const productPrice = formData.get("productPrice");
 
     let data = await fetch(`/api/products-show/${update}`, {
       method: "PUT",
       body: JSON.stringify({
         productName,
+        productDescription,
         productShortDescription,
+        productCategory,
         productPrice,
+        productImage,
+        productLocation,
       }),
     });
     data = await data.json();
@@ -117,6 +172,36 @@ export default async function Page({ params: { update } }) {
                             }
                           />
                         </div>
+                        <div className="grid gap-3 mb-12">
+                          <Label htmlFor="description">Full Description</Label>
+
+                          <EditorProvider className="min-h-32">
+                            <Editor
+                              value={product.product?.productDescription}
+                              onChange={onChange}
+                              defaultValue={product.product?.productDescription}
+                            >
+                              <Toolbar>
+                                {/* <BtnUndo />
+                              <BtnRedo /> */}
+                                <Separator />
+                                <BtnBold />
+                                <BtnItalic />
+                                <BtnUnderline />
+                                <BtnStrikeThrough />
+                                <Separator />
+                                {/* <BtnNumberedList /> */}
+                                {/* <BtnBulletList /> */}
+                                <Separator />
+                                <BtnLink />
+                                <BtnClearFormatting />
+                                <HtmlButton />
+                                <Separator />
+                                {/* <BtnStyles /> */}
+                              </Toolbar>
+                            </Editor>
+                          </EditorProvider>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
@@ -128,21 +213,25 @@ export default async function Page({ params: { update } }) {
                       <div className="grid gap-6 sm:grid-cols-3">
                         <div className="grid gap-3">
                           <Label htmlFor="category">Category</Label>
-                          <Select>
+                          <Select
+                            onValueChange={setProductCategory}
+                            defaultValue={product?.product?.productCategory}
+                          >
                             <SelectTrigger
                               id="category"
+                              name="productCategory"
                               aria-label="Select category"
                             >
                               <SelectValue placeholder="Select category" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="clothing">Clothing</SelectItem>
-                              <SelectItem value="electronics">
-                                Electronics
-                              </SelectItem>
-                              <SelectItem value="accessories">
-                                Accessories
-                              </SelectItem>
+                              {category?.map((category, i) => {
+                                return (
+                                  <SelectItem value={category?.name}>
+                                    {category?.name}
+                                  </SelectItem>
+                                );
+                              })}
                             </SelectContent>
                           </Select>
                         </div>
@@ -171,14 +260,81 @@ export default async function Page({ params: { update } }) {
                   <Card x-chunk="dashboard-07-chunk-5">
                     <CardHeader>
                       <CardTitle>Product Location</CardTitle>
-                      <CardDescription>Dhamrai, Dhaka, Dhaka</CardDescription>
+                      <CardDescription>
+                        Set Product Price For Bidding
+                      </CardDescription>
                     </CardHeader>
-                    <CardContent></CardContent>
+                    <CardContent>
+                      <Select defaultValue={product.product?.productLocation} onValueChange={setProductLocation}>
+                        <SelectTrigger
+                          id="location"
+                          name="productCategory"
+                          aria-label="Select location"
+                        >
+                          <SelectValue placeholder="Select location" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {location?.map((location, i) => {
+                            return (
+                              <SelectItem value={location?.name}>
+                                {location?.name}
+                              </SelectItem>
+                            );
+                          })}
+                        </SelectContent>
+                      </Select>
+                    </CardContent>
+                  </Card>
+                  <Card
+                    className="overflow-hidden"
+                    x-chunk="dashboard-07-chunk-4"
+                  >
+                    <CardHeader>
+                      <CardTitle>Product Images</CardTitle>
+                      <CardDescription>
+                        Upload images of your product.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid gap-2">
+                        <Image
+                          alt="Product image"
+                          className="object-cover w-full rounded-md aspect-square"
+                          height="300"
+                          placeholder="blur"
+                          blurDataURL={"/placeholder.svg"}
+                          src={productImage}
+                          width="300"
+                        />
+                        <div className="grid gap-2 grid-cols">
+                          <CldUploadWidget
+                            uploadPreset="recycle-bin"
+                            onSuccess={(result, { widget }) => {
+                              setResource(result?.info);
+                              widget.close();
+                            }}
+                          >
+                            {({ open }) => {
+                              function handleOnClick() {
+                                setResource(undefined);
+                                open();
+                              }
+                              return (
+                                <div
+                                  className="px-4 py-2 text-center border border-input bg-background hover:bg-accent hover:text-accent-foreground"
+                                  variant="outline"
+                                  onClick={handleOnClick}
+                                >
+                                  Upload an Image
+                                </div>
+                              );
+                            }}
+                          </CldUploadWidget>
+                        </div>
+                      </div>
+                    </CardContent>
                   </Card>
                 </div>
-              </div>
-              <div className="flex items-center justify-center gap-2 md:hidden">
-                <Button size="sm">Confirm Order</Button>
               </div>
             </div>
           </main>

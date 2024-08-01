@@ -16,9 +16,9 @@ export default function Home() {
       <Banner />
       <FeaturedCategory />
       <FeaturedProducts />
-      <FeatureLeft />
-      <FeatureRight />
-      {/* <FAQ /> */}
+      {/* <FeatureLeft /> */}
+      {/* <FeatureRight /> */}
+      <FAQ />
       {/* <CTA /> */}
     </>
   );
