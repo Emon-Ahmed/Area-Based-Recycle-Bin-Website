@@ -5,7 +5,7 @@ import React from "react";
 const CookiePolicy = () => {
   return (
     <div>
-      <TopBar />
+      {/* <TopBar /> */}
       <Navbar />
       <div className="container my-12">Cookie Policy</div>
     </div>

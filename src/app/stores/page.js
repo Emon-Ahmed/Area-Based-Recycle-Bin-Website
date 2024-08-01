@@ -5,7 +5,7 @@ import React from "react";
 const StoresPage = () => {
   return (
     <div>
-      <TopBar />
+      {/* <TopBar /> */}
       <Navbar />
     </div>
   );

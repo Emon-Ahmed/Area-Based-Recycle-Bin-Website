@@ -1,6 +1,6 @@
 import "./globals.css";
 import "./../styles/loader.css";
-import { Inter as FontSans } from "next/font/google";
+import {  Plus_Jakarta_Sans as FontSans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from "@/components/custom-footer";
 import { SessionProvider } from "next-auth/react";
@@ -8,7 +8,7 @@ import { auth } from "@/lib/auth";
 
 const fontSans = FontSans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  // variable: "--font-sans",
 });
 
 export const metadata = {
@@ -19,11 +19,11 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   const session = auth();
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={fontSans.className}>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          "min-h-screen bg-background antialiased",
+          // fontSans.variable
         )}
       >
         <SessionProvider session={session}>{children}</SessionProvider>

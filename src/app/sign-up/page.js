@@ -13,7 +13,7 @@ import TopBar from "@/components/top-bar";
 export default async function LoginForm() {
   return (
     <div>
-      <TopBar />
+      {/* <TopBar /> */}
       <Navbar />
       <Card className="max-w-sm mx-auto my-32">
         <CardHeader>

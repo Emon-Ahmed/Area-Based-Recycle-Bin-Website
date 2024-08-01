@@ -20,7 +20,7 @@ import TopBar from "@/components/top-bar";
 export default function Component() {
   return (
     <div>
-      <TopBar />
+      {/* <TopBar /> */}
       <Navbar />
       <div className="container my-24">
         <Section className="my-16">

@@ -15,31 +15,23 @@ export default function Footer() {
           <div className="flex flex-col gap-6 not-prose">
             <Link href="/" className="flex items-center gap-2">
               <h3 className="sr-only">Recycle Bin Website</h3>
-              {/* <Image
-                src={Logo}
-                alt="Logo"
-                width={120}
-                height={27.27}
-                className="transition-all dark:invert hover:opacity-75"
-              ></Image> */}
               <RiLuggageCartLine className="w-12 h-12" />
               <span className="text-3xl font-bold">Recycle Bin Website</span>
             </Link>
             <p>
               <Balancer>
-                Area Based Shop is a collection of Next.js, React, Typescript
-                components for building landing pages and websites.
+              An innovative marketplace connecting multiple vendors, providing specialized recycling bins tailored to regional requirements, promoting sustainable waste management practices and websites.
               </Balancer>
             </p>
           </div>
           <div className="flex flex-col gap-2">
-            <h5>Website</h5>
+            <h5 className="text-lg font-bold">Website</h5>
             <Link href="/">Home</Link>
             <Link href="/products">Shop</Link>
             <Link href="/about">About</Link>
           </div>
           <div className="flex flex-col gap-2">
-            <h5>Legal</h5>
+            <h5 className="text-lg font-bold">Legal</h5>
             <Link href="/privacy-policy">Privacy Policy</Link>
             <Link href="/terms-of-service">Terms of Service</Link>
             <Link href="/cookie-policy">Cookie Policy</Link>

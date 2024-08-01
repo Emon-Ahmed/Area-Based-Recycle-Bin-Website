@@ -5,7 +5,7 @@ import TopBar from "@/components/top-bar";
 const ProductsPage = () => {
   return (
     <div>
-      <TopBar />
+      {/* <TopBar /> */}
       <Navbar />
       <ShopBanner />
     </div>

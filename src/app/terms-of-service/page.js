@@ -5,7 +5,7 @@ import React from "react";
 const TermsOfService = () => {
   return (
     <div>
-      <TopBar />
+      {/* <TopBar /> */}
       <Navbar />
       <div className="container my-12">Terms Of Service</div>
     </div>

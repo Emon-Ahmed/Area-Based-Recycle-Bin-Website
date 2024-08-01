@@ -7,7 +7,7 @@ const Page = async ({ params: { id } }) => {
   const product = await getProducts(id);
   return (
     <div>
-      <TopBar />
+      {/* <TopBar /> */}
       <Navbar />
       <div className="container">
         <SingleProduct product={product} />

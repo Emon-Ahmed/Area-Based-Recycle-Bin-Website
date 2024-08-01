@@ -10,7 +10,7 @@ import TopBar from "@/components/top-bar";
 const Hero = () => {
   return (
     <div>
-      <TopBar />
+      {/* <TopBar /> */}
       <Navbar />
       <div className="container">
         <Section>

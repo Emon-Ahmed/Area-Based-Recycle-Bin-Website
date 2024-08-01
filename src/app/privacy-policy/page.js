@@ -4,7 +4,7 @@ import TopBar from "@/components/top-bar";
 const PrivacyPolicy = () => {
   return (
     <div>
-      <TopBar/>
+      {/* <TopBar/> */}
       <Navbar />
       <div className="container my-12">Privacy Policy</div>
     </div>

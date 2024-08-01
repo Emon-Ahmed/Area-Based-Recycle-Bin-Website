@@ -11,7 +11,7 @@ import TopBar from "@/components/top-bar";
 export default function Home() {
   return (
     <>
-      <TopBar/>
+      {/* <TopBar/> */}
       <Navbar />
       <Banner />
       <FeaturedCategory />
