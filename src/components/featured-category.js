@@ -1,10 +1,15 @@
 import { Button } from "@/components/ui/button";
+import { Badge } from "./ui/badge";
+import CategoryCard from "./category-card";
 
 export default function FeaturedCategory() {
   return (
     <section className="pt-20 pb-8">
+      <div className="mb-2 text-center">
+        <Badge className="px-4 py-2 ">Buy and Sell Easily</Badge>
+      </div>
       <h2 className="mb-10 text-4xl font-bold text-center ">
-        Shop by Categories
+        SHOP BY CATEGORIES
       </h2>
       <div className="flex justify-center gap-8">
         <div className="flex flex-col items-center">
@@ -50,6 +55,9 @@ export default function FeaturedCategory() {
           <Button variant="outline">Lighting Items</Button>
         </div>
       </div>
+      {/* <div>
+        <CategoryCard/>
+      </div> */}
     </section>
   );
 }

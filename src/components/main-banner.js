@@ -18,35 +18,7 @@ export default function Banner() {
               Area Based <br />
               Recycle Bin Website
             </span>
-            {/* <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-              Area Based <br />Recycle  Bin Website
-            </span> */}
           </div>
-          {/* <div className="flex items-center space-x-4">
-            <div className="flex-1">
-              <Input
-                className="w-full"
-                placeholder="Search for anything..."
-                type="text"
-              />
-            </div>
-            <Select>
-              <SelectTrigger className="w-40">
-                <SelectValue placeholder="Location" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Barishal">Barishal</SelectItem>
-                <SelectItem value="Chattogram">Chattogram</SelectItem>
-                <SelectItem value="Khulna">Khulna</SelectItem>
-                <SelectItem value="Dhaka">Dhaka</SelectItem>
-                <SelectItem value="Rajshahi">Rajshahi</SelectItem>
-                <SelectItem value="Rangpur">Rangpur</SelectItem>
-                <SelectItem value="Mymensingh">Mymensingh</SelectItem>
-                <SelectItem value="Sylhet">Sylhet</SelectItem>
-              </SelectContent>
-              <Button>Search</Button>
-            </Select>
-          </div> */}
         </div>
       </div>
     </div>

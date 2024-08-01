@@ -112,7 +112,6 @@ export default function Page() {
                               <Input
                                 id="name"
                                 name="name"
-                                defaultValue="Dress"
                                 className="col-span-3"
                               />
                             </div>

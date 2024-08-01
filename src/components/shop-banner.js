@@ -55,57 +55,59 @@ export default async function ShopBanner() {
   }
 
   return (
-    <>
-      <div className="flex flex-col items-center justify-center py-12 bg-gradient-to-br from-[#4776E6] to-[#8E54E9]">
-        <div className="w-full max-w-3xl p-8 bg-white rounded-lg shadow-lg">
-          <div className="mb-6 text-center">
-            <h1 className="text-2xl font-bold text-gray-900">
-              Localized Recycle Bins Marketplace
-            </h1>
-            <p className="mt-2 text-gray-600">
-              Search for anything and get the best results.
-            </p>
-          </div>
+    <div>
+      <div className="bg-[url('/cover.jpg')]">
+        <div className="flex flex-col items-center justify-center py-12 layer">
+          <div className="w-full max-w-3xl p-8 bg-white rounded-lg shadow-lg ">
+            <div className="mb-6 text-center ">
+              <h1 className="text-2xl font-bold text-gray-900">
+                Localized Recycle Bins Marketplace
+              </h1>
+              <p className="mt-2 text-gray-600">
+                Search for anything and get the best results.
+              </p>
+            </div>
 
-          <div className="flex items-center space-x-4">
-            <Select onValueChange={(e) => setSearchProductCategory(e)}>
-              <SelectTrigger className="w-40">
-                <SelectValue placeholder="Category" />
-              </SelectTrigger>
-              <SelectContent>
-                {category?.map((category, i) => {
-                  return (
-                    <SelectItem value={category?.name}>
-                      {category?.name}
-                    </SelectItem>
-                  );
-                })}
-              </SelectContent>
-            </Select>
-            <Select onValueChange={setSearchProductLocation}>
-              <SelectTrigger className="w-40">
-                <SelectValue placeholder="Location" />
-              </SelectTrigger>
-              <SelectContent>
-                {location?.map((location, i) => {
-                  return (
-                    <SelectItem value={location?.name}>
-                      {location?.name}
-                    </SelectItem>
-                  );
-                })}
-              </SelectContent>
-            </Select>
-            <form className="flex items-center space-x-4" onSubmit={onSubmit}>
-              <Input
-                id="productName"
-                name="productName"
-                className="w-full"
-                placeholder="Search for anything..."
-                type="text"
-              />
-              <Button type="submit">Search</Button>
-            </form>
+            <div className="flex items-center space-x-4">
+              <Select onValueChange={(e) => setSearchProductCategory(e)}>
+                <SelectTrigger className="w-40">
+                  <SelectValue placeholder="Category" />
+                </SelectTrigger>
+                <SelectContent>
+                  {category?.map((category, i) => {
+                    return (
+                      <SelectItem value={category?.name}>
+                        {category?.name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
+              <Select onValueChange={setSearchProductLocation}>
+                <SelectTrigger className="w-40">
+                  <SelectValue placeholder="Location" />
+                </SelectTrigger>
+                <SelectContent>
+                  {location?.map((location, i) => {
+                    return (
+                      <SelectItem value={location?.name}>
+                        {location?.name}
+                      </SelectItem>
+                    );
+                  })}
+                </SelectContent>
+              </Select>
+              <form className="flex items-center space-x-4" onSubmit={onSubmit}>
+                <Input
+                  id="productName"
+                  name="productName"
+                  className="w-full"
+                  placeholder="Search for anything..."
+                  type="text"
+                />
+                <Button type="submit">Search</Button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -125,6 +127,6 @@ export default async function ShopBanner() {
           <ShopProducts />
         )}
       </div>
-    </>
+    </div>
   );
 }

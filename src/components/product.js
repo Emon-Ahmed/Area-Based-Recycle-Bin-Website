@@ -23,7 +23,7 @@ const Product = ({ product }) => {
           width={400}
         />
         <div className="p-4 bg-white dark:bg-gray-950">
-          <h3 className="text-lg font-semibold md:text-xl">
+          <h3 className="text-base font-semibold ">
             <Link href={"/products/" + product?._id}>
               {product?.productName}
             </Link>

@@ -122,7 +122,7 @@ export default async function DashboardLayout({ children }) {
                       className="flex items-center gap-3 px-3 py-2 transition-all rounded-lg hover:text-primary"
                     >
                       <LocateFixed className="w-4 h-4" />
-                      Supports
+                      Support
                     </Link>
                   </>
                 ) : (
