@@ -56,7 +56,7 @@ export default async function ShopBanner() {
 
   return (
     <div>
-      <div className="bg-[url('/cover.jpg')]">
+      <div className="bg-[url('https://res.cloudinary.com/dag8439hw/image/upload/v1722569213/recyle-bin/cf7j32kxx0rn6l9peavn.jpg')]">
         <div className="flex flex-col items-center justify-center py-12 layer">
           <div className="w-full max-w-3xl p-8 bg-white rounded-lg shadow-lg ">
             <div className="mb-6 text-center ">

@@ -40,12 +40,12 @@ function LoginFormComponent() {
           <div className="grid gap-2">
             <div className="flex items-center">
               <Label htmlFor="password">Password</Label>
-              <Link
+              {/* <Link
                 href="/forgot-password"
                 className="inline-block ml-auto text-sm underline"
               >
                 Forgot your password?
-              </Link>
+              </Link> */}
             </div>
             <Input id="password" name="password" type="password" required />
           </div>
