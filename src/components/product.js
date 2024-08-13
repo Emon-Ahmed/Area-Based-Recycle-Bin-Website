@@ -37,7 +37,7 @@ const Product = ({ product }) => {
             ৳{product?.productPrice}
             </h4>
             <Link href={"/products/" + product?._id}>
-              <Button size="sm">Buy Now</Button>
+              <Button size="sm">Bid Now</Button>
             </Link>
           </div>
         </div>
