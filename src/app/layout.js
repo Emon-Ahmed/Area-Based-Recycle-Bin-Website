@@ -6,6 +6,7 @@ import Footer from "@/components/custom-footer";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/lib/auth";
 import { Toaster } from "@/components/ui/toaster";
+import FooterX from "@/components/footer";
 
 const fontSans = FontSans({ subsets: ["latin"] });
 
@@ -20,7 +21,7 @@ export default async function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning className={fontSans.className}>
       <body className={cn("min-h-screen bg-background antialiased")}>
         <SessionProvider session={session}>{children}</SessionProvider>
-        <Footer />
+        <FooterX />
         <Toaster />
       </body>
     </html>
